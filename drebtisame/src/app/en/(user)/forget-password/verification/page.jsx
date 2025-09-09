@@ -1,7 +1,7 @@
 import React from "react";
 
-const page = () => {
+const Verification = () => {
   return <div> Verification page </div>;
 };
 
-export default page;
+export default Verification;
