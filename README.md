@@ -27,6 +27,14 @@ The platform provides **appointment booking, patient reviews, bilingual support 
 
 ---
 
+## 🎨 **Design File**
+
+You can view the full design prototype on Figma:  
+[![Figma](https://img.shields.io/badge/Figma-Design%20File-f24e1e?logo=figma&logoColor=white)](https://www.figma.com/design/9FEm1QTQ2Wg8tyz549B6gD/Doctor-App?node-id=1-5&p=f&t=aZqnEaZP6dhbctwF-0)
+<!-- This Figma file contains all the UI/UX designs for Dr. Ebtisam Nada’s website, including patient and admin interfaces. -->
+
+---
+
 ## 👨‍💻 **Team Roles**  
 
 This project is developed by a collaborative team of developers and designers:  
