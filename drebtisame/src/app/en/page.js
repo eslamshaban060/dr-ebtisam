@@ -4,10 +4,11 @@ import Link from "next/link";
 const page = () => {
   return (
     <div className=" bg-amber-800 text-3xl text-white  py-[50px]">
-      السلام عليكم يا شباب عاملين ايه
-      <button className=" block">
-        <Link href="/en">الذهاب للانجليزيه </Link>
-      </button>
+      hello with you ya shabab and are you ok ?{" "}
+      <Link href="/" className=" block">
+        {" "}
+        go to arabic{" "}
+      </Link>
     </div>
   );
 };
