@@ -5,15 +5,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Variables */
 :root {
-  --bk: #000000;   /* Black */
-  --nv: #103463;   /* Navy */
-  --lb: #D3E3FD;   /* Light Blue */
-  --lg: #F2F3F7;   /* Light Gray */
-  --wh: #FFFFFF;   /* White */
+  --bk: #000000; /* Black */
+  --nv: #103463; /* Navy */
+  --lb: #d3e3fd; /* Light Blue */
+  --lg: #f2f3f7; /* Light Gray */
+  --wh: #ffffff; /* White */
+  --db: #08294a; /* Dark Blue */
+  --gr: #1f8a70; /* Grean */
+  --re: #c5172e;
 }
 
 /* Scrollbar Customization */
@@ -31,5 +35,5 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #08294a; 
+  background-color: #08294a;
 }
