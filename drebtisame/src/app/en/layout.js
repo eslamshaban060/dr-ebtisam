@@ -4,7 +4,7 @@ import "../globals.css";
 const poppins = Poppins({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "100", "200", "800", "900"],
 });
 
 // meta dat in english

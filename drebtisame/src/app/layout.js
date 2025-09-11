@@ -1,4 +1,4 @@
-import { Geist, Changa } from "next/font/google";
+import { Poppins, Changa } from "next/font/google";
 import "./globals.css";
 
 const changa = Changa({
@@ -6,10 +6,15 @@ const changa = Changa({
   subsets: ["arabic"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
+export const poppins = Poppins({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "100", "200", "800", "900"],
+});
 
 // app/metadata.ts
 
-export const metadata = {
+const metadata = {
   title: "د. ابتسام ندا | استشاري السمع والاتزان",
   description:
     "الموقع الرسمي للأستاذة الدكتورة ابتسام حامد ندا – دكتوراه واستشاري أمراض السمع والاتزان، أستاذ بكلية الطب جامعة الزقازيق. خدمات العيادة تشمل تشخيص أمراض الأذن، ضعف السمع عند الأطفال، برمجة وصيانة السماعات، تشخيص الدوار والاتزان، الفحوصات اللازمة لزراعة القوقعة، والاختبارات النفسية (فرط الحركة، التوحد، صعوبة التعلم).",
