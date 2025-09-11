@@ -1,5 +1,6 @@
 import { Poppins, Changa } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "./context/AuthContext";
 
 const changa = Changa({
   variable: "--font-Changa",
@@ -49,7 +50,9 @@ const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={changa.className}>{children}</body>
+      <body className={changa.className}>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

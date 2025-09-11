@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import { poppins } from "../../../../app/layout";
 import Link from "next/link";
 import LoadingOverlay from "../loading";
+import useAuth from "../../../../app/hocks/useAuth";
 
 const VerificationForm = ({ otp }) => {
   const [valedEmail, setvaledEmail] = useState(true);
   const [status, setStatus] = useState(false);
   const router = useRouter();
+  const { login } = useAuth();
 
   const [inputsValues, setInputsValues] = useState(Array(5).fill(""));
   const inputRef = useRef([]);
@@ -21,6 +23,7 @@ const VerificationForm = ({ otp }) => {
     if (otpCode === otp) {
       setvaledEmail(true);
       setStatus(true);
+      login();
       router.push("/new-password");
     } else {
       setvaledEmail(false);
