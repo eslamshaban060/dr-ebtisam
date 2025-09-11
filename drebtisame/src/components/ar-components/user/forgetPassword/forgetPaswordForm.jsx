@@ -15,7 +15,7 @@ const ForgetPasswordForm = ({ users }) => {
   const router = useRouter();
 
   // generat rondom otp
-  function generateOTP(length = 6) {
+  function generateOTP(length = 5) {
     let otp = "";
     for (let i = 0; i < length; i++) {
       otp += Math.floor(Math.random() * 10);
