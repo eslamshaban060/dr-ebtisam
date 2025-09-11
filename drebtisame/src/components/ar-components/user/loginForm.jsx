@@ -5,25 +5,33 @@ import UserButton from "./button";
 import { useRouter } from "next/navigation";
 import { poppins } from "../../../../src/app/layout";
 import Link from "next/link";
+import LoadingOverlay from "./loading";
 
 const LoginForm = ({ users }) => {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
   const [valedEmail, setvaledEmail] = useState(true);
   const [valedpass, setvaledpass] = useState(true);
+  const [status, setStatus] = useState(false);
   const router = useRouter();
 
   const submitForm = () => {
     event.preventDefault();
+    setStatus(true);
+
     if (users.length >= 1) {
-      const user = users.filter((person) => person.email === email);
+      const user = users.filter((person) => person.email === email.trim());
+      console.log(user);
       if (user.length >= 1) {
-        if (user[0].password === pass) {
+        if (user[0].password === pass.trim()) {
+          setStatus(false);
           router.push("/");
         } else {
+          setStatus(false);
           setvaledpass(false);
         }
       } else {
+        setStatus(false);
         setvaledEmail(false);
       }
     } else {
@@ -32,7 +40,7 @@ const LoginForm = ({ users }) => {
   };
 
   return (
-    <div className="w-[100%] text-[var(--wh)]">
+    <div className="w-[100%]  relative text-[var(--wh)]">
       <form action="" className=" m-5 flex flex-col gap-5">
         {/* to handel email  */}
         <div className=" flex flex-col gap-2">
@@ -96,11 +104,18 @@ const LoginForm = ({ users }) => {
           onClick={() => {
             submitForm();
           }}
-          className=" w-[100%]"
+          className=" transform w-[100%] hover:!p-0  !p-1"
         >
           <UserButton color="lb" value="تسجيل الدخول " />
         </div>
       </form>
+      <div
+        className={`fixed w-[100vw] h-[100vh] left-0 top-0 z-40 ${
+          status ? "block" : "hidden"
+        }`}
+      >
+        <LoadingOverlay />
+      </div>
     </div>
   );
 };

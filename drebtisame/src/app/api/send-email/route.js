@@ -16,16 +16,10 @@ export async function POST(req) {
       from: process.env.EMAIL_USER,
       to,
       subject,
-      text: message,
+      html: message,
     });
-
-    return new Response(JSON.stringify({ message: "Email sent!" }), {
-      status: 200,
-    });
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (err) {
-    console.error("Error sending email:", err); // ← هتطبع السبب الحقيقي في الكونسول
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-    });
+    throw new Error({ error: err.message });
   }
 }
