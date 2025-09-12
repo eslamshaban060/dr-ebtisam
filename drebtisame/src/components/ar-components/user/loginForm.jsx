@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { poppins } from "../../../../src/app/layout";
 import Link from "next/link";
 import LoadingOverlay from "./loading";
+import useAuth from "../../../app/hocks/useAuth";
 
 const LoginForm = ({ users }) => {
   const [email, setemail] = useState("");
@@ -14,6 +15,7 @@ const LoginForm = ({ users }) => {
   const [valedpass, setvaledpass] = useState(true);
   const [status, setStatus] = useState(false);
   const router = useRouter();
+  const { login } = useAuth();
 
   const submitForm = () => {
     event.preventDefault();
@@ -21,7 +23,6 @@ const LoginForm = ({ users }) => {
 
     if (users.length >= 1) {
       const user = users.filter((person) => person.email === email.trim());
-      console.log(user);
       if (user.length >= 1) {
         if (user[0].password === pass.trim()) {
           setStatus(false);
@@ -92,14 +93,18 @@ const LoginForm = ({ users }) => {
             >
               <p className={poppins.className}>كلمة المرور غير صحيحة.</p>
             </div>
-            <Link
-              href="/forget-password"
-              className={` text-[var(--wh)] underline  !pt-1 text-[12px] `}
+            <p
+              className={` text-[var(--wh)] underline  cursor-pointer !pt-1 text-[12px] `}
+              onClick={() => {
+                login();
+                router.push("/forget-password");
+              }}
             >
               <p className={poppins.className}>هل نسيت كلمة المرور ؟</p>
-            </Link>
+            </p>
           </div>
         </div>
+
         <div
           onClick={() => {
             submitForm();

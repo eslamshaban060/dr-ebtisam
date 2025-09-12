@@ -25,7 +25,7 @@ const ForgetPasswordForm = ({ users }) => {
 
   const OTP_CODE = generateOTP();
 
-  const message = `<div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background-color:#f4f4f4; padding:24px;">
+  const message = `<div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background-color:#f4f4f4; padding:24px;margin:auto">
   <div style="width:100%; max-width:600px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.15); overflow:hidden; background-color:#ffffff; margin:0; padding:0; font-family:Arial, sans-serif;">
 
     <!-- Logo -->
@@ -86,6 +86,7 @@ const ForgetPasswordForm = ({ users }) => {
           setStatus(false);
           router.push("/forget-password/verification");
           localStorage.setItem("otp", OTP_CODE);
+          localStorage.setItem("userMail", to);
         } else {
           setStatus(false);
           throw new Error(

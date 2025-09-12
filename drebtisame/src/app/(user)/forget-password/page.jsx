@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../../../src/components/ar-components/user/Header";
 import UsersData from "../../../../src/components/ar-components/user/forgetPassword/usersData";
+import ProtectedRoutes from "../../protected/protectedRoutes";
 const ForgetPassword = () => {
   return (
     <div className=" w-[100vw] h-[110vh] md:h-[100vh] bg-[url('/user/userbg.jpg')] bg-cover bg-center">
@@ -23,4 +24,10 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+export default function protectedForgetPassword() {
+  return (
+    <ProtectedRoutes>
+      <ForgetPassword />
+    </ProtectedRoutes>
+  );
+}
