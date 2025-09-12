@@ -41,7 +41,8 @@ This project is developed by a collaborative team of developers and designers:
 
 - **Islam Shaaban – Developer (Team Leader)**  
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eslamshaban060/) [![GitHub](https://img.shields.io/badge/GitHub-black?logo=github&logoColor=white)](https://github.com/eslamshaban060) [![Gmail](https://img.shields.io/badge/Email-red?logo=gmail&logoColor=white)](mailto:eslamshaban060@gmail.com)  
-  *Project setup, routing, SEO & optimizations*  
+    *Project setup, routing, SEO & optimizations*  
+    *Implemented full authentication cycle: login, forgot password, OTP verification, and password reset*
 
 - **Ahmed Reda – Developer**  
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ahmed-reda-salama-962864292/) [![GitHub](https://img.shields.io/badge/GitHub-black?logo=github&logoColor=white)](https://github.com/Ahmed-RS-22) [![Gmail](https://img.shields.io/badge/Email-red?logo=gmail&logoColor=white)](mailto:ahmed.rs.1532@gmail.com)  
