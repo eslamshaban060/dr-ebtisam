@@ -3,7 +3,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Header from "../../../../components/ar-components/user/Header";
 import VerficationForm from "../../../../../src/components/ar-components/user/verification/veriticationForm";
-const page = () => {
+import ProtectedRoutes from "../../../../app/protected/protectedRoutes";
+const Verfication = () => {
   const [savedOtp, setSavedOtp] = useState(null);
 
   useEffect(() => {
@@ -31,4 +32,10 @@ const page = () => {
   );
 };
 
-export default page;
+export default function protectedVerfication() {
+  return (
+    <ProtectedRoutes>
+      <Verfication />
+    </ProtectedRoutes>
+  );
+}

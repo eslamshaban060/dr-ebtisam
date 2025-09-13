@@ -1,18 +1,16 @@
 "use client";
 import { React } from "react";
 import { useState } from "react";
-import UserButton from "../button";
+import UserButton from "../../../ar-components/user/button";
 import { useRouter } from "next/navigation";
 import { poppins } from "../../../../app/layout";
 import Link from "next/link";
-import LoadingOverlay from "../loading";
-import useAuth from "../../../../app/hocks/useAuth";
+import LoadingOverlay from "../../../en-components/login/loading";
 
 const ForgetPasswordForm = ({ users }) => {
   const [to, setto] = useState("");
   const [valedEmail, setvaledEmail] = useState(true);
   const [status, setStatus] = useState(false);
-  const { login } = useAuth();
 
   const router = useRouter();
 
@@ -37,14 +35,14 @@ const ForgetPasswordForm = ({ users }) => {
 
     <!-- Header -->
     <div style="text-align:center; font-weight:bold; color:#ffffff; padding:20px; font-size:20px; background-color:#004080;">
-      إعادة تعيين كلمة المرور
+      Reset Your Password
     </div>
 
     <!-- Body -->
     <div style="padding:24px; color:#333333; font-size:16px; line-height:1.6;">
-      <p style="margin-bottom:16px;text-align:center">مرحباً 👋،</p>
+      <p style="margin-bottom:16px;text-align:center">Hello 👋,</p>
       <p style="margin-bottom:16px;text-align:center">
-        لقد طلبت إعادة تعيين كلمة المرور الخاصة بك. من فضلك استخدم الكود التأكيدي أدناه لإتمام العملية:
+        You requested to reset your password. Please use the verification code below to complete the process:
       </p>
 
       <div style="text-align:center; margin:24px 0;">
@@ -54,21 +52,22 @@ const ForgetPasswordForm = ({ users }) => {
       </div>
 
       <p style="text-align:center; margin-bottom:8px;">
-        ⚠️ هذا الكود صالح لمدة <strong>10 دقائق</strong> فقط.
+        ⚠️ This code is valid for <strong>10 minutes</strong> only.
       </p>
       <p style="text-align:center;">
-        إذا لم تطلب إعادة تعيين كلمة المرور، يمكنك تجاهل هذا البريد الإلكتروني.
+        If you did not request a password reset, you can safely ignore this email.
       </p>
     </div>
 
     <!-- Footer -->
     <div style="text-align:center; font-size:12px; color:#333333; padding:16px;">
-      © 2025 موقع دكتورة ابتسام ندا – جميع الحقوق محفوظة.
+      © 2025 Dr. Ebtisam Nada Website – All rights reserved.
     </div>
   </div>
 </div>
 `;
-  const subject = "🔑 كود تأكيد إعادة تعيين كلمة المرور";
+
+  const subject = "🔑 Password Reset Verification Code";
 
   const submitForm = async (event) => {
     event.preventDefault();
@@ -86,14 +85,13 @@ const ForgetPasswordForm = ({ users }) => {
 
         if (res.ok) {
           setStatus(false);
-          login();
-          router.push("/forget-password/verification");
+          router.push("/en/forget-password/verification");
           localStorage.setItem("otp", OTP_CODE);
           localStorage.setItem("userMail", to);
         } else {
           setStatus(false);
           throw new Error(
-            "حدث خطأ أثناء إرسال الرمز التأكيدي، الرجاء المحاولة مرة أخرى"
+            "An error occurred while sending the verification code. Please try again."
           );
         }
       } else {
@@ -101,10 +99,8 @@ const ForgetPasswordForm = ({ users }) => {
         setvaledEmail(false);
       }
     } else {
-      setStatus(false);
-      throw new Error("لقد حصلت مشكله فى الداتا بيس الخاصه بالمشرفين  ");
+      throw new Error("A problem occurred in the administrators' database.");
     }
-    setStatus(false);
   };
 
   return (
@@ -116,7 +112,7 @@ const ForgetPasswordForm = ({ users }) => {
             className={`font-[400] text-[20px] overflow-hidden `}
             htmlFor=""
           >
-            البريد الإلكتروني
+            Email
           </label>
           <input
             className={` outline-0 focus:border-[3px] focus:text-[17px] w-[100%] border-[1px]  rounded-[10px] h-[65px] !px-[40px] ${
@@ -127,27 +123,32 @@ const ForgetPasswordForm = ({ users }) => {
               setto(e.target.value);
             }}
             type="email"
-            placeholder=" الرجاء إدخال بريدك الإلكتروني"
+            placeholder="Please enter your email"
           />
           <div
             className={`${valedEmail ? " hidden" : "block"} text-[var(--re)] `}
           >
-            <p className={poppins.className}> الايميل غير مسجل فى الموقع </p>
+            <p className={poppins.className}>
+              The email is not registered on the website.
+            </p>
           </div>
         </div>
 
         <div className=" flex gap-2 md:gap-5 w-[100%]">
+          <Link
+            href="/en/login"
+            className=" transform w-[100%] hover:!p-0  !p-1"
+          >
+            <UserButton color="lb" value="Back" />
+          </Link>
           <div
             onClick={(e) => {
               submitForm(e);
             }}
             className="transform w-[100%] hover:!p-0  !p-1"
           >
-            <UserButton color="gr" value="متابعة" />
+            <UserButton color="gr" value="Continue" />
           </div>
-          <Link href="/login" className=" transform w-[100%] hover:!p-0  !p-1">
-            <UserButton color="lb" value="تراجع" />
-          </Link>
         </div>
       </form>
       <div

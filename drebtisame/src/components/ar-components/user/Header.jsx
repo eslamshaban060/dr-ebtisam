@@ -15,7 +15,7 @@ const Header = ({ title, describtion }) => {
         />
       </div>
       <div className=" text-center !overflow-hidden text-[var(--wh)]">
-        <h2 className="text-[34px] !overflow-hidden md:text-[38px] font-semibold ">
+        <h2 className="text-[28px] sm:text-[33px] !overflow-hidden md:text-[38px] font-semibold ">
           {title}
         </h2>
         <p

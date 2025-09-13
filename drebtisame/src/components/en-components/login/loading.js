@@ -12,9 +12,7 @@ export default function LoadingOverlay() {
         className="flex flex-col items-center"
       >
         <Loader2 className="w-12 h-12 text-white animate-spin" />
-        <p className="text-white mt-4 overflow-hidden text-lg">
-          جاري الإرسال...
-        </p>
+        <p className="text-white mt-4 overflow-hidden text-lg">Sending...</p>
       </motion.div>
     </div>
   );
