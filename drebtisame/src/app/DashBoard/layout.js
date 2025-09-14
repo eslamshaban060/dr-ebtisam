@@ -48,23 +48,20 @@ const metadata = {
   },
 };
 
-
 export default function DashboardLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
       <body className={`${changa.className} bg-[var(--lb)] min-h-dvh `}>
         <main className=" bg-[var(--lb)] w-full  grid md:grid-cols-12 gap-5 md:p-10 md:pb-4 p-5 pb-2 ">
           {/* Sidebar */}
-          <aside className="lg:col-span-4 col-span-6 md:order-1 order-2">
+          <aside className="lg:col-span-3 col-span-6 md:order-1 order-2">
             <SideBar />
           </aside>
 
           {/* Main content */}
-          <section className="lg:col-span-8 col-span-6 md:order-2 order-1 flex flex-col gap-10">
+          <section className="lg:col-span-9 col-span-6 md:order-2 order-1 flex flex-col gap-10">
             <TopBar />
-            <div className="h-full">
-            {children}
-            </div>
+            <div className="h-full">{children}</div>
           </section>
         </main>
       </body>
