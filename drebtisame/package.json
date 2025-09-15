@@ -13,11 +13,13 @@
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.3",
     "framer-motion": "^12.23.12",
+    "icons": "^1.0.0",
     "lucide-react": "^0.544.0",
     "next": "^15.5.2",
     "nodemailer": "^7.0.6",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -25,6 +27,8 @@
     "@types/react": "19.1.12",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4"
   }
 }

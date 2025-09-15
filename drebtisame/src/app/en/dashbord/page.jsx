@@ -1,6 +1,6 @@
 "use client";
 import { redirect } from "next/navigation";
 const dashbordPage = () => {
-  redirect("/dashbord/control-panel");
+  redirect("/en/dashbord/control-panel");
 };
 export default dashbordPage;
