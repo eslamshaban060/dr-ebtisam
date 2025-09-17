@@ -4,7 +4,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 const SearchBar = ({ lan }) => {
   return (
     <div
-      className={`search  hover:border-2 border-[var(--nv)] flex-1 hidden max-h-16 h-[58px] shadow-[var(--shadow-1)]  sm:flex  items-center gap-5 px-5  ${lan === "ar" ? "pr-20" : "pl-20"}  bg-[var(--lg)] rounded-xl relative `}
+      className={`search focus-within:border-2 hover:border-2 border-[var(--nv)] flex-1 hidden max-h-16 h-[58px] shadow-[var(--shadow-1)]  sm:flex  items-center gap-5 px-5  ${lan === "ar" ? "pr-20" : "pl-20"}  bg-[var(--lg)] rounded-xl relative `}
     >
       <label
         htmlFor="Search"
