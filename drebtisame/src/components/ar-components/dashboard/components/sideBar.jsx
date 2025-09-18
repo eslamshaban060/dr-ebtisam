@@ -68,7 +68,7 @@ const SideBar = ({ Links, title, lan }) => {
           </h2>
         </div>
 
-        <hr className="text-[var(--gr)]" />
+        <hr className="text-[var(--gry)]" />
 
         {/* Links */}
 

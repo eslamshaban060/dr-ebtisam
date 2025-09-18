@@ -99,9 +99,9 @@ const ArticlePage = () => {
           <div className="articles flex flex-col gap-10 p-5">
             {latestArticle.map((article) => (
               <div
-                id={article.id}
+                key={article.id}
                 onClick={() => goToArticle(article.id)}
-                className="article cursor-pointer transition hover:shadow-[var(--shadow-2)] shadow-[var(--shadow-1)] flex md:flex-row flex-col bg-[var(--wh)]/50 lg:h-[240px] overflow-hidden rounded-2xl "
+                className="article cursor-pointer transition  hover:transform-[translateY(-5px)_scaleX(1.01)] hover:shadow-[var(--shadow-2)] shadow-[var(--shadow-1)] flex md:flex-row flex-col bg-[var(--wh)]/50 lg:h-[240px] overflow-hidden rounded-2xl "
               >
                 <div className="image h-full lg:w-[240px] md:w-[260px] w-full  ">
                   <img

@@ -37,6 +37,8 @@
 //     func: () => alert("Logged out!"),
 //   },
 // ];
+"use client";
+
 import art from "../../../../../public/user/art.png"
 import {
   LayoutGrid,
@@ -270,3 +272,107 @@ export const enArticles = [
     date: "November 20, 2023",
   }
 ];
+export const messages = [
+  {
+    id: 1,
+    name: "نوال بوشامة",
+    date: "30-08-2025",
+    message: "لديك رسالة جديدة من أحد مرضاك",
+  },
+  {
+    id: 2,
+    name: "ليلى بوشامة",
+    date: "29-08-2025",
+    message: "لديك رسالة جديدة من أحد مرضاك",
+  },
+  {
+    id: 3,
+    name: "كريم منصوري",
+    date: "28-08-2025",
+    message: "لديك رسالة جديدة من أحد مرضاك",
+  },
+  {
+    id: 4,
+    name: "كريم بوشامة",
+    date: "27-08-2025",
+    message: "لديك رسالة جديدة من أحد مرضاك",
+  },
+  {
+    id: 5,
+    name: "سارة يوسف",
+    date: "26-08-2025",
+    message: "لديك رسالة جديدة من أحد مرضاك",
+  },
+  {
+    id: 6,
+    name: "أحمد حسن",
+    date: "25-08-2025",
+    message: "لديك رسالة جديدة من أحد مرضاك",
+  },
+];
+export const enMessages = [
+  {
+    id: 1,
+    name: "Nawal Bouchama",
+    date: "30-08-2025",
+    message: "You have a new message from one of your patients",
+  },
+  {
+    id: 2,
+    name: "Layla Bouchama",
+    date: "29-08-2025",
+    message: "You have a new message from one of your patients",
+  },
+  {
+    id: 3,
+    name: "Karim Mansouri",
+    date: "28-08-2025",
+    message: "You have a new message from one of your patients",
+  },
+  {
+    id: 4,
+    name: "Karim Bouchama",
+    date: "27-08-2025",
+    message: "You have a new message from one of your patients",
+  },
+  {
+    id: 5,
+    name: "Sara Youssef",
+    date: "26-08-2025",
+    message: "You have a new message from one of your patients",
+  },
+  {
+    id: 6,
+    name: "Ahmed Hassan",
+    date: "25-08-2025",
+    message: "You have a new message from one of your patients",
+  },
+];
+
+// import React from "react";
+// import { supabase } from "../../../../utils/supabase/supabase";
+// import { useState, useEffect } from "react";
+
+// const Arts = () => {
+//   const [articles, setArticles] = useState([]);
+
+//   useEffect(() => {
+//     async function getarticles(params) {
+//       const { data, error } = await supabase.from("article");
+//       if (error) {
+//         throw new Error("لقد حصلت مشكله فى الداتا بيس الخاصه بالمشرفين  ");
+//       } else {
+//         console.log(data);
+        
+//         setArticles(data);
+//       }
+//     }
+//     getarticles()
+//   }, []);
+//   return (
+//     <div>
+//     </div>
+//   );
+// };
+
+// export default Arts;

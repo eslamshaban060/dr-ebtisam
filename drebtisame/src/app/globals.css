@@ -13,17 +13,17 @@
     --bk: #000000; /* Black */
     --nv: #103463; /* Navy */
     --lb: #d3e3fd; /* Light Blue */
+    --lb-2: #c4dbfa; /* Light Blue */
     --lg: #f2f3f7; /* Light Gray */
-    --gr: #8aaabe;
-    --tb:#38BCC1;
-    --yl:#F6BE2C;  /*yellow */ 
+    --gry: #8aaabe;
+    --tb: #38bcc1;
+    --yl: #f6be2c; /*yellow */
     --wh: #ffffff; /* White */
     --db: #08294a; /* Dark Blue */
     --bl: #1a5a81; /* Blue */
     --gr: #1f8a70; /* Grean */
     --re: #c5172e;
-
-/* shadows */
+    /* shadows */
     --shadow-1: 0px 4px 4px 0px #00000040;
     --shadow-2: 0px 6px 6px 2px #1a5a8195;
   }
@@ -47,25 +47,31 @@
   }
 }
 @layer components {
-.article-message{
-  background-image: url("../../public/user/welcome-bg.png");
-  background-position: center center ;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.line::before{
-  background: linear-gradient( 90deg, #103463 0%, rgba(16, 52, 99, 0) 100%);
-}
-.bg-img-1{
-  background-image: url("../../public/user/card-article-1.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.bg-img-2{
-  background-image: url("../../public/user/card-article-2.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  .article-message {
+    background-image: url("../../public/user/welcome-bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .mwm {
+    background-image: url("../../public/user/message-layer.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .line::before {
+    background: linear-gradient(90deg, #103463 0%, rgba(16, 52, 99, 0) 100%);
+  }
+  .bg-img-1 {
+    background-image: url("../../public/user/card-article-1.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .bg-img-2 {
+    background-image: url("../../public/user/card-article-2.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }

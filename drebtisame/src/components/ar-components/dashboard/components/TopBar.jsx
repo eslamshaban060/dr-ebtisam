@@ -1,9 +1,13 @@
+"use client";
+import { usePathname } from "next/navigation";
 import { Globe, Bell, User } from "lucide-react";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
 import Image from "next/image";
 import avatar from "../../../../../public/user/avatar.png";
 const TopBar = ({ lan }) => {
+  const path = usePathname();
+  const currentSubPath = path.split("/").pop();
   return (
     <header className="w-full justify-center gap-3 items-center h-fit flex pb-5 ">
       <SearchBar lan={lan} />
@@ -23,8 +27,8 @@ const TopBar = ({ lan }) => {
           <Link
             href={
               lan === "en"
-                ? "/dashboard/control-panel"
-                : "/en/dashboard/control-panel"
+                ? `/dashboard/${currentSubPath}`
+                : `/en/dashboard/${currentSubPath}`
             }
           >
             <Globe size={28} />
@@ -34,8 +38,8 @@ const TopBar = ({ lan }) => {
           <Link
             href={
               lan === "ar"
-                ? "/dashboard/control-panel"
-                : "/en/dashboard/control-panel"
+                ? `/dashboard/${currentSubPath}`
+                : `/en/dashboard/${currentSubPath}`
             }
           >
             <Bell size={28} />
