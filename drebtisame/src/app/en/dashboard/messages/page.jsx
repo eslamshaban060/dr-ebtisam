@@ -7,7 +7,7 @@ const MessagePage = () => {
   if (myMessages.length === 0) {
     return (
       <>
-        <section className="h-[75dvh] overflow-auto  bg-[var(--lb)] p-2">
+        <section className="h-[75dvh] overflow-y-auto  bg-[var(--lb)] p-2">
           <div className="mwm   w-full shadow-[var(--shadow-1)]  min-h-[134px] flex flex-col  justify-center items-center p-10 gap-5 md:py-0 py-4 rounded-2xl ">
             <h2 className=" md:text-3xl text-xl leading-[24px] text-shadow-lg font-semibold  text-[var(--nv)]">
               الرسائل

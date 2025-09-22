@@ -43,7 +43,7 @@ const ArticlePage = () => {
           </div>
         </div>
       )}
-      <section className="h-[75dvh] overflow-auto  bg-[var(--lb)] p-2">
+      <section className="h-[75dvh] overflow-y-auto  bg-[var(--lb)] p-2">
         {/* welcome message  */}
         <div className=" article-message border w-full  min-h-[256px] md:py-0 py-4 rounded-2xl ">
           <div className="w-full h-full flex justify-center gap-5 items-center px-7   md:flex-row flex-col ">

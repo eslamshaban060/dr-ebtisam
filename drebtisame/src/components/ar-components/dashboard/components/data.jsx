@@ -348,6 +348,92 @@ export const enMessages = [
     message: "You have a new message from one of your patients",
   },
 ];
+// reviewsAr.js
+export const reviewsAr = [
+  {
+    id: 1,
+    name: "ليلى بن يوسف",
+    review: "الدكتورة كانت رائعة جداً، شرحت لي حالتي بكل وضوح وبأسلوب راقي.",
+  },
+  {
+    id: 2,
+    name: "نسرين بوعزة",
+    review: "أول مرة أزور دكتورة بهذه الدقة في التشخيص، شكراً جزيلاً.",
+  },
+  {
+    id: 3,
+    name: "وليد مرزوق",
+    review: "تعامل إنساني رائع وتشخيص دقيق. شكراً دكتورة.",
+  },
+  {
+    id: 4,
+    name: "سعاد بن أحمد",
+    review: "كانت الاستشارة واضحة جداً وأعطتني نصائح عملية للعلاج.",
+  },
+  {
+    id: 5,
+    name: "محمد العابد",
+    review: "الزيارة كانت مريحة جداً، شعرت بالاهتمام الحقيقي.",
+  },
+  {
+    id: 6,
+    name: "حنان بن خليفة",
+    review: "شرح ممتاز واهتمام بكل التفاصيل. شكراً جزيلاً.",
+  },
+  {
+    id: 7,
+    name: "عماد يوسف",
+    review: "خدمة رائعة، والتشخيص كان دقيقاً جداً.",
+  },
+  {
+    id: 8,
+    name: "سارة منصور",
+    review: "أجمل تجربة طبية مررت بها، شكراً على الاهتمام.",
+  },
+];
+// reviewsEn.js
+export const reviewsEn = [
+  {
+    id: 1,
+    name: "Laila Ben Youssef",
+    review: "The doctor was amazing, she explained my condition very clearly and with great professionalism.",
+  },
+  {
+    id: 2,
+    name: "Nesrine Bouazza",
+    review: "First time visiting such a precise doctor in diagnosis, thank you so much.",
+  },
+  {
+    id: 3,
+    name: "Walid Marzouk",
+    review: "Very humane approach and accurate diagnosis. Thank you, doctor.",
+  },
+  {
+    id: 4,
+    name: "Souad Ben Ahmed",
+    review: "The consultation was very clear, and she gave me practical treatment advice.",
+  },
+  {
+    id: 5,
+    name: "Mohamed Al-Abed",
+    review: "The visit was very comfortable, I truly felt cared for.",
+  },
+  {
+    id: 6,
+    name: "Hanan Ben Khalifa",
+    review: "Excellent explanation and attention to every detail. Many thanks.",
+  },
+  {
+    id: 7,
+    name: "Imad Youssef",
+    review: "Great service, and the diagnosis was very accurate.",
+  },
+  {
+    id: 8,
+    name: "Sarah Mansour",
+    review: "The best medical experience I’ve had, thank you for the care.",
+  },
+];
 
 // import React from "react";
 // import { supabase } from "../../../../utils/supabase/supabase";
