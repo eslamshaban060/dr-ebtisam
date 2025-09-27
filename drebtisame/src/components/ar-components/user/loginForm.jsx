@@ -4,9 +4,9 @@ import { useState } from "react";
 import UserButton from "./button";
 import { useRouter } from "next/navigation";
 import { poppins } from "../../../../src/app/layout";
-import Link from "next/link";
 import LoadingOverlay from "./loading";
 import useAuth from "../../../app/hocks/useAuth";
+import UserData from "../../../app/hocks/userData";
 
 const LoginForm = ({ users }) => {
   const [email, setemail] = useState("");
@@ -16,6 +16,7 @@ const LoginForm = ({ users }) => {
   const [status, setStatus] = useState(false);
   const router = useRouter();
   const { login } = useAuth();
+  const { User, Login } = UserData();
 
   const submitForm = () => {
     event.preventDefault();
@@ -26,7 +27,9 @@ const LoginForm = ({ users }) => {
       if (user.length >= 1) {
         if (user[0].password === pass.trim()) {
           setStatus(false);
-          router.push("/");
+          Login(user[0]);
+          setStatus(false);
+          router.push("/dashbord");
         } else {
           setStatus(false);
           setvaledpass(false);
@@ -93,7 +96,7 @@ const LoginForm = ({ users }) => {
             >
               <p className={poppins.className}>كلمة المرور غير صحيحة.</p>
             </div>
-            <p
+            <div
               className={` text-[var(--wh)] underline  cursor-pointer !pt-1 text-[12px] `}
               onClick={() => {
                 login();
@@ -101,7 +104,7 @@ const LoginForm = ({ users }) => {
               }}
             >
               <p className={poppins.className}>هل نسيت كلمة المرور ؟</p>
-            </p>
+            </div>
           </div>
         </div>
 

@@ -4,7 +4,7 @@ import NavLink from "./NavLink";
 import logo from "../../../../../public/user/image.png";
 import { Menu, X } from "lucide-react";
 
-const SideBar = ({ Links, title, lan }) => {
+const SideBar = ({ Links, title, lan, user }) => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -42,9 +42,9 @@ const SideBar = ({ Links, title, lan }) => {
       {/* Toggle Button (mobile only) */}
       <button
         onClick={() => setOpen(!open)}
-        className="lg:hidden mt-3 md:mt-2 bg-[var(--nv)] text-[var(--wh)] p-2 md:p-3 rounded-lg shadow-lg"
+        className={`lg:hidden  ${open ? "hidden" : "block"} mt-3 absolute z-30  bg-[var(--nv)]  top-5  right-5 text-[var(--wh)] p-2 md:p-3 rounded-lg shadow-lg`}
       >
-        {open ? <X size={32} /> : <Menu size={32} />}
+        {open ? <X size={32} className=" hidden" /> : <Menu size={32} />}
       </button>
 
       {/* Sidebar */}
@@ -76,7 +76,7 @@ const SideBar = ({ Links, title, lan }) => {
           {Links.map((link) => (
             <li
               key={link.id}
-              className="w-full h-16 shadow-sm rounded-xl"
+              className={`w-full h-16 shadow-sm rounded-xl ${link.id === 6 ? (user.role === "owner" ? "block" : "hidden") : "block"}`}
               onClick={() => setOpen(false)}
             >
               {link.func ? (

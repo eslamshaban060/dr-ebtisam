@@ -3,11 +3,12 @@ import SearchBar from "./SearchBar";
 import Link from "next/link";
 import Image from "next/image";
 import avatar from "../../../../../public/user/avatar.png";
-const TopBar = ({ lan }) => {
+const TopBar = ({ lan, user }) => {
   return (
-    <header className="w-full justify-center gap-3 items-center h-fit flex pb-5 ">
+    <header className="w-full  flex gap-5  justify-end h-fit  pb-2 ">
+      <div className="w-[60px] lg:hidden"></div>
       <SearchBar lan={lan} />
-      <ul className="actions flex flex-1 items-center justify-center lg:justify-end p-2 gap-5 md:gap-10 ">
+      <ul className="actions flex flex-1 items-center justify-end lg:justify-end  gap-5 md:gap-10 ">
         <li className=" size-14 bg-[var(--lg)] rounded-full flex justify-center items-center overflow-hidden  shadow-[var(--shadow-1)]">
           <Link
             href={lan === "ar" ? "/dashbord/settings" : "/en/dashbord/settings"}
