@@ -29,7 +29,7 @@ const LoginForm = ({ users }) => {
           setStatus(false);
           Login(user[0]);
           setStatus(false);
-          router.push("/dashbord");
+          router.push("/dashboard");
         } else {
           setStatus(false);
           setvaledpass(false);

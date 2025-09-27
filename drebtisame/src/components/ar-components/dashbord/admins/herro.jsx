@@ -2,7 +2,7 @@ import React from "react";
 
 const Herro = ({ title, desc, butt }) => {
   return (
-    <div className="bg-[url('/dashbord/herro.jpg')] h-[250px] sm:h-[220px] rounded-2xl w-[100%] bg-cover relative bg-center  flex justify-center items-center">
+    <div className="bg-[url('/dashboard/herro.jpg')] h-[250px] sm:h-[220px] rounded-2xl w-[100%] bg-cover relative bg-center  flex justify-center items-center">
       <div className="absolute inset-0 w-[100%]  h-[250px] sm:h-[220px] bg-[#08294a]/50 backdrop-blur-sm !rounded-2xl ">
         <div className=" text-white  flex flex-col gap-3 sm:gap-4 items-center py-5 text-center ">
           <h2 className=" font-bold  text-3xl sm:text-4xl">{title} </h2>
