@@ -1,18 +1,43 @@
-import React from "react";
-import Herro from "../../../components/ar-components/dashboard/admins/herro";
+"use client";
+import { useState } from "react";
+import NoMessages from "../../../components/ar-components/dashbord/message/NoMessages";
+import MessageList from "../../../components/ar-components/dashbord/message/MessageList";
+import { messages } from "../../../components/ar-components/dashboard/components/data";
+import Herro from "../../../components/ar-components/dashbord/admins/herro";
+import Title from "../../../components/ar-components/dashbord/admins/title";
 
-const page = () => {
+const MessagePage = () => {
+  const [myMessages, setMyMessage] = useState(messages);
+
+  const handleDelete = (id) => {
+    setMyMessage((prev) => prev.filter((el) => el.id !== id));
+  };
+
   return (
-    <div className="w-[100%] flex flex-col gap-5 items-center justify-center ">
-      <section className="w-[100%] rounded-2xl">
-        <Herro
-          title="إدارة المشرفين"
-          desc="هذا القسم خاص باداره المشرفين حيث يمكن لدكتور ابتسام فقط اضافه وحذف المشرفين ."
-          butt="إضافة مشرف"
+    <section className="h-[75dvh] overflow-y-auto bg-[var(--lb)] p-2">
+      <Herro
+        title="إدارة المشرفين"
+        desc="هذا القسم خاص باداره المشرفين حيث يمكن لدكتور ابتسام فقط اضافه وحذف المشرفين ."
+        butt="إضافة مشرف"
+      />
+
+      <div className="mt-10">
+        <Title />
+      </div>
+      {myMessages.length === 0 ? (
+        <NoMessages
+          message1="لا يوجد أي مشرف حالياً"
+          message2="ستجدين هنا كل المشرفين فور إضافتهم"
         />
-      </section>
-    </div>
+      ) : (
+        <MessageList
+          messages={myMessages}
+          page="admin"
+          onDelete={handleDelete}
+        />
+      )}
+    </section>
   );
 };
 
-export default page;
+export default MessagePage;

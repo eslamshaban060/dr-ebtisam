@@ -1,45 +1,6 @@
-// import {
-//   LayoutGrid,
-//   File,
-//   MessageCircleMore,
-//   Pencil,
-//   Settings,
-//   LogOut,
-// } from "lucide-react";
-// export const Links = [
-//   {
-//     id: 1,
-//     name: "لوحة التحكم",
-//     logo: <LayoutGrid />,
-//     path: "/dashboard/control-panel",
-//   },
-//   { id: 2, name: "المقالات", logo: <File />, path: "/dashboard/articles" },
-
-//   {
-//     id: 3,
-//     name: "الرسائل",
-//     logo: <MessageCircleMore />,
-//     path: "/dashboard/messages",
-//   },
-//   { id: 4, name: "التقييمات", logo: <Pencil />, path: "/dashboard/reviews" },
-
-//   {
-//     id: 5,
-//     name: "الإعدادات",
-//     logo: <Settings />,
-//     path: "/dashboard/settings",
-//   },
-
-//   {
-//     id: 6,
-//     name: "تسجيل الخروج",
-//     logo: <LogOut />,
-//     func: () => alert("Logged out!"),
-//   },
-// ];
 "use client";
 
-import art from "../../../../../public/user/art.png"
+import art from "../../../../../public/user/art.png";
 import {
   LayoutGrid,
   File,
@@ -167,14 +128,14 @@ export const articles = [
   },
   {
     id: 8,
-    image:art,
+    image: art,
     title: "تقديم خدمات التأهيل السمعي التخاطبي:",
     description:
       "خدمات التأهيل السمعي التخاطبي تلعب دوراً حيويًا في تقديم الدعم والتوجيه لمرتدي المعينات السمعية، سواء كانوا أطفالًا أو كبارًا. تهدف هذه الخدمات إلى تعزيز القدرات السمعية واللغوية وتحسين جودة الحياة.",
     date: "نوفمبر 18, 2023",
   },
   {
-    id:9,
+    id: 9,
     image: art,
     title: "تقديم خدمات التأهيل السمعي التخاطبي:",
     description:
@@ -182,13 +143,13 @@ export const articles = [
     date: "نوفمبر 19, 2023",
   },
   {
-    id:10,
+    id: 10,
     image: art,
     title: "تقديم خدمات التأهيل السمعي التخاطبي:",
     description:
       "خدمات التأهيل السمعي التخاطبي تلعب دوراً حيويًا في تقديم الدعم والتوجيه لمرتدي المعينات السمعية، سواء كانوا أطفالًا أو كبارًا. تهدف هذه الخدمات إلى تعزيز القدرات السمعية واللغوية وتحسين جودة الحياة.",
     date: "نوفمبر 20, 2023",
-  }
+  },
 ];
 export const enArticles = [
   {
@@ -270,7 +231,7 @@ export const enArticles = [
     description:
       "Auditory-verbal therapy services play a vital role in supporting and guiding hearing aid users, whether children or adults. These services aim to enhance auditory and language abilities and improve quality of life.",
     date: "November 20, 2023",
-  }
+  },
 ];
 export const messages = [
   {
@@ -396,12 +357,14 @@ export const reviewsEn = [
   {
     id: 1,
     name: "Laila Ben Youssef",
-    review: "The doctor was amazing, she explained my condition very clearly and with great professionalism.",
+    review:
+      "The doctor was amazing, she explained my condition very clearly and with great professionalism.",
   },
   {
     id: 2,
     name: "Nesrine Bouazza",
-    review: "First time visiting such a precise doctor in diagnosis, thank you so much.",
+    review:
+      "First time visiting such a precise doctor in diagnosis, thank you so much.",
   },
   {
     id: 3,
@@ -411,7 +374,8 @@ export const reviewsEn = [
   {
     id: 4,
     name: "Souad Ben Ahmed",
-    review: "The consultation was very clear, and she gave me practical treatment advice.",
+    review:
+      "The consultation was very clear, and she gave me practical treatment advice.",
   },
   {
     id: 5,
@@ -449,7 +413,7 @@ export const reviewsEn = [
 //         throw new Error("لقد حصلت مشكله فى الداتا بيس الخاصه بالمشرفين  ");
 //       } else {
 //         console.log(data);
-        
+
 //         setArticles(data);
 //       }
 //     }
