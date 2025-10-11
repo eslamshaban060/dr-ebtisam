@@ -6,11 +6,15 @@ import Link from "next/link";
 import Image from "next/image";
 import avatar from "../../../../../public/user/avatar.png";
 const TopBar = ({ lan, user }) => {
+  const path = usePathname();
+
   return (
     <header className="w-full  flex gap-5  justify-end h-fit  pb-2 ">
       <div className="w-[60px] lg:hidden"></div>
       <SearchBar lan={lan} />
-      <ul className="actions flex flex-1 items-center justify-end lg:justify-end  gap-5 md:gap-10 ">
+      <ul
+        className={`actions flex ${lan === "en" ? "mt-[-10px] " : "mt-0"}flex-1 items-center justify-end lg:justify-end  gap-5 md:gap-10`}
+      >
         <li className=" size-14 bg-[var(--lg)] rounded-full flex justify-center items-center overflow-hidden  shadow-[var(--shadow-1)]">
           <Link
             href={
@@ -24,27 +28,23 @@ const TopBar = ({ lan, user }) => {
             ></Image>
           </Link>
         </li>
-        <li className=" size-12 sm:size-14 bg-[var(--lg)] rounded-full flex justify-center items-center shadow-[var(--shadow-1)]">
-          {/* <Link
-            href={
-              lan === "en"
-                ? `/dashboard/${currentSubPath}`
-                : `/en/dashboard/${currentSubPath}`
-            }
-          > */}
-          {/* <Globe size={28} />
-          </Link> */}
+        <li className=" size-14 sm:size-16 bg-[var(--lg)] rounded-full flex justify-center items-center shadow-[var(--shadow-1)]">
+          <Link href={lan === "en" ? `/${path.slice(4)}` : `/en/${path}`}>
+            <Globe size={33} />
+          </Link>
         </li>
-        <li className=" size-12 sm:size-14 bg-[var(--lg)] rounded-full flex justify-center items-center shadow-[var(--shadow-1)]">
-          {/* <Link
+        <li
+          className={`size-14 sm:size-16  rounded-full  flex justify-center items-center shadow-[var(--shadow-1)] ${path === "/dashboard/notification" || path === "/en/dashboard/notification" ? "bg-[var(--nv)] text-white" : "  bg-white text-black"} `}
+        >
+          <Link
             href={
               lan === "ar"
-                ? `/dashboard/${currentSubPath}`
-                : `/en/dashboard/${currentSubPath}`
+                ? `/dashboard/notification`
+                : `/en/dashboard/notification`
             }
           >
-            <Bell size={28} />
-          </Link> */}
+            <Bell size={33} />
+          </Link>
         </li>
       </ul>
     </header>

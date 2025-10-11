@@ -3,46 +3,33 @@ import { useState } from "react";
 import NavLink from "./NavLink";
 import logo from "../../../../../public/user/image.png";
 import { Menu, X } from "lucide-react";
+import UserData from "../../../../app/hocks/userData";
+import Popup from "./popup";
 
 const SideBar = ({ Links, title, lan, user }) => {
+  if (user === null) {
+    return;
+  }
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
+  const { Logout } = UserData();
 
   return (
     <>
       {/* logout popup  */}
       {show && (
-        <div
-          className={`${show ? "transform-[scale(1)]" : "transform-[scale(0)]"}  fixed transition   inset-0 bg-black/40 z-50 backdrop-blur-[4px] flex justify-center items-center `}
-        >
-          <div className="box flex bg-[var(--wh)] lg:w-[clamp(300px,40dvw,100%)] w-[clamp(300px,80dvw,100%)] rounded-3xl h-80 p-10 gap-10 items-center justify-evenly flex-col ">
-            <p className=" w-full lg:w-[80%] text-shadow-lg text-center text-[var(--nv)] font-semibold lg:text-3xl text-2xl leading-6">
-              هل أنت متأكد أنك تريد تسجيل الخروج
-            </p>
-            <div className="btns flex gap-5 sm:gap-12">
-              <button
-                className="rounded-xl lg:text-xl border-2 text-lg  leading-[24px] lg:py-5 lg:px-10 px-8 py-3 bg-[var(--nv)] text-[var(--wh)] "
-                onClick={() => {
-                  alert();
-                  setShow(false);
-                }}
-              >
-                متأكد
-              </button>
-              <button
-                className="rounded-xl lg:text-xl border-2 text-lg  leading-[24px] lg:py-5 lg:px-10 px-8 py-3 bg-[var(--wh)] text-[var(--nv)] "
-                onClick={() => setShow(false)}
-              >
-                الغاء
-              </button>
-            </div>
-          </div>
-        </div>
+        <Popup
+          show={show}
+          setShow={setShow}
+          fun={Logout}
+          text="هل أنت متأكد أنك تريد تسجيل الخروج"
+        />
       )}
+
       {/* Toggle Button (mobile only) */}
       <button
         onClick={() => setOpen(!open)}
-        className={`lg:hidden  ${open ? "hidden" : "block"} mt-3 absolute z-30  bg-[var(--nv)]  top-5  right-5 text-[var(--wh)] p-2 md:p-3 rounded-lg shadow-lg`}
+        className={`lg:hidden  ${open ? "hidden" : "block"} mt-3 absolute z-30  bg-[var(--nv)]  top-5 ${lan === "en" ? "left-5" : "right-5"}  text-[var(--wh)] p-2 md:p-3 rounded-lg shadow-lg`}
       >
         {open ? <X size={32} className=" hidden" /> : <Menu size={32} />}
       </button>

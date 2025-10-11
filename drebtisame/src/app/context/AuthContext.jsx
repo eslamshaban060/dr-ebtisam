@@ -9,14 +9,11 @@ export const AuthProvider = ({ children }) => {
   const login = () => {
     setisAuthenticated(true);
   };
-  const enlogin = () => {
-    setisAuthenticated(true);
-  };
   const logout = () => {
     setisAuthenticated(false);
   };
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, enlogin }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -17,7 +17,6 @@ const LoginForm = ({ users }) => {
   const router = useRouter();
   const { login } = useAuth();
   const { User, Login } = UserData();
-
   const submitForm = () => {
     event.preventDefault();
     setStatus(true);
@@ -29,6 +28,7 @@ const LoginForm = ({ users }) => {
           setStatus(false);
           Login(user[0]);
           setStatus(false);
+          login();
           router.push("/dashboard");
         } else {
           setStatus(false);
@@ -39,8 +39,10 @@ const LoginForm = ({ users }) => {
         setvaledEmail(false);
       }
     } else {
+      setStatus(false);
       throw new Error("لقد حصلت مشكله فى الداتا بيس الخاصه بالمشرفين  ");
     }
+    setStatus(false);
   };
 
   return (

@@ -6,27 +6,27 @@ import MessageList from "../../../../components/ar-components/dashbord/message/M
 import { supabase } from "../../../../utils/supabase/supabase";
 import { useEffect } from "react";
 
-const MessagePage = () => {
-  const [myMessages, setMyMessage] = useState([]);
+const NotificationPage = () => {
+  const [notification, setMyNotification] = useState([]);
 
   useEffect(() => {
     async function GetMessages() {
-      const { data, error } = await supabase.from("messages").select("*");
+      const { data, error } = await supabase.from("notification").select("*");
       if (error) {
         throw new Error("لقد حصلت مشكله فى الداتا بيس الخاصه بالمشرفين  ");
       } else {
-        setMyMessage(data);
+        setMyNotification(data);
       }
     }
     GetMessages();
   }, []);
 
-  async function handleDelete(id, mail) {
+  async function handleDelete(id) {
     try {
       const { data, error } = await supabase
-        .from("messages")
+        .from("notification")
         .delete()
-        .match({ id: id, email: mail });
+        .match({ id: id });
 
       if (error) {
         throw new Error(error.message);
@@ -40,19 +40,19 @@ const MessagePage = () => {
   return (
     <section className="h-[75dvh] overflow-y-auto bg-[var(--lb)] p-2">
       <WelcomeMessage
-        title="Messages"
-        desc=" Hello Doctor, in this section you can view your patients' questions and respond to them easily at any time."
+        title="Notifications"
+        desc="Welcome to the Notifications section! Here, you can view your latest alerts."
       />
-      {myMessages.length === 0 ? (
+      {notification.length === 0 ? (
         <NoMessages
-          message1="No Messages at the moment!"
-          message2="You have no messages. Updates will appear here"
-          sr="message"
+          message1="No notifications at the moment!"
+          message2="You have no notifications. Updates will appear here"
+          sr="notifiy"
         />
       ) : (
         <MessageList
-          page="massages"
-          messages={myMessages}
+          page="notification"
+          messages={notification}
           onDelete={handleDelete}
           lan="en"
         />
@@ -61,4 +61,4 @@ const MessagePage = () => {
   );
 };
 
-export default MessagePage;
+export default NotificationPage;

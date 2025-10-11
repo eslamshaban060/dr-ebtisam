@@ -7,7 +7,6 @@ import { poppins } from "../../../../app/layout";
 import Link from "next/link";
 import LoadingOverlay from "../loading";
 import { supabase } from "../../../../utils/supabase/supabase";
-import Error from "@/app/error";
 
 const NewPasswordFom = () => {
   const [pass, setpass] = useState("");

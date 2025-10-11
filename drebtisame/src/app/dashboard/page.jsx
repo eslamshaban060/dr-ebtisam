@@ -1,7 +1,14 @@
 "use client";
+import ProtectedRoutes from "../protected/protectedRoutes";
 import { redirect } from "next/navigation";
-const dashboardPage = () => {
+const DashboardPage = () => {
   redirect("/dashboard/control-panel");
 };
-export default dashboardPage;
 
+export default function protectedNewPassword() {
+  return (
+    <ProtectedRoutes>
+      <DashboardPage />
+    </ProtectedRoutes>
+  );
+}

@@ -7,8 +7,12 @@ const page = () => {
       <Link className=" block !px-5 rounded-xl bg-white !py-3" href="/login">
         الذهاب الى تسجيل الدخول
       </Link>
-      <Link className=" block !px-5 rounded-xl bg-white !py-3" href="/dashboard">
-      dashboard      </Link>
+      <Link
+        className=" block !px-5 rounded-xl bg-white !py-3"
+        href="/dashboard"
+      >
+        dashboard{" "}
+      </Link>
     </div>
   );
 };

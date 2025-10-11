@@ -1,9 +1,9 @@
 import noMessagePic from "../../../../../public/user/no-message.png";
-
-const NoMessages = ({ message1, message2 }) => (
+import noNotification from "../../../../../public/dashbord/notification.png";
+const NoMessages = ({ message1, message2, sr }) => (
   <div className="content w-full mt-12 flex flex-col px-10 rounded-2xl pt-12 pb-10 gap-10 items-center bg-[var(--lg)]/40">
     <img
-      src={noMessagePic.src}
+      src={sr === "message" ? noMessagePic.src : noNotification.src}
       alt="no messages"
       className="lg:max-w-[375px]"
     />

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { poppins } from "../../../../src/app/layout";
 import LoadingOverlay from "../../en-components/login/loading";
 import useAuth from "../../../app/hocks/useAuth";
-
+import UserData from "../../../app/hocks/userData";
 const LoginForm = ({ users }) => {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
@@ -15,6 +15,7 @@ const LoginForm = ({ users }) => {
   const [status, setStatus] = useState(false);
   const router = useRouter();
   const { login } = useAuth();
+  const { User, Login } = UserData();
 
   const submitForm = () => {
     event.preventDefault();
@@ -25,7 +26,10 @@ const LoginForm = ({ users }) => {
       if (user.length >= 1) {
         if (user[0].password === pass.trim()) {
           setStatus(false);
-          router.push("/en");
+          Login(user[0]);
+          setStatus(false);
+          login();
+          router.push("/en/dashboard");
         } else {
           setStatus(false);
           setvaledpass(false);
@@ -39,6 +43,7 @@ const LoginForm = ({ users }) => {
         "A problem has occurred in the administrators' database."
       );
     }
+    setStatus(false);
   };
 
   return (

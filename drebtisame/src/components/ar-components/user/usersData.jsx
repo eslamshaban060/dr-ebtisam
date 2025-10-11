@@ -8,7 +8,7 @@ const UsersData = () => {
   const [users, setusers] = useState([]);
 
   useEffect(() => {
-    async function GetUsers(params) {
+    async function GetUsers() {
       const { data, error } = await supabase.from("user").select("*");
       if (error) {
         throw new Error("لقد حصلت مشكله فى الداتا بيس الخاصه بالمشرفين  ");
