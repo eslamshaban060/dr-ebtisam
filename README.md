@@ -54,7 +54,7 @@ This project is developed by a collaborative team of developers and designers:
 
 - **Yasmine Roukas – UI/UX Designer**  
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yasmineroukas/) [![Gmail](https://img.shields.io/badge/Email-red?logo=gmail&logoColor=white)](mailto:y_roukas@estin.dz) [![Behance](https://img.shields.io/badge/Behance-0057ff?logo=behance&logoColor=white)](https://behance.net/yasmineroukas1) [![Portfolio](https://img.shields.io/badge/Portfolio-000?logo=vercel&logoColor=white)](https://yasmineroukas.vercel.app/)
-*Responsible for the end-to-end design process — from research and wireframing to final UI.
+*Responsible for the end-to-end design process — from research and wireframing to final UI.*
 
 Designed and prototyped:
 
@@ -62,4 +62,4 @@ Login / Logout flow
 
 Doctor’s interface (dashboard, messages, notifications, blogs )
 
-Patient’s interface *
+Patient’s interface 
