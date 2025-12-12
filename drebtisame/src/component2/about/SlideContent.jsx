@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 
-export default function SlideContent({ slide }) {
+export default function SlideContent({ slide, lang }) {
   return (
-    <div className="animate-slide-in  flex  flex-col justify-center lg:justify-start lg:text-right text-center ">
+    <div
+      className={`animate-slide-in  flex  flex-col justify-center lg:justify-start ${lang === "ar" ? "lg:text-right" : "lg:text-left"} text-center`}
+    >
       {/* العنوان الفرعي */}
       <div className="inline-block mb-6">
         <p className="text-teal-500 w-fit mx-auto lg:mx-0 text-base md:text-lg font-semibold bg-teal-50 px-4 py-2 rounded-full">
@@ -23,13 +25,13 @@ export default function SlideContent({ slide }) {
       </p>
 
       {/* المؤهلات */}
-      <div className="space-y-4 flex justify-center  mx-auto  flex-col md:space-y-5 mb-8">
+      <div className="space-y-4  mx-auto  lg:mx-0 md:space-y-5 mb-8">
         {slide.credentials.map((credential, index) => (
           <div key={index} className="flex items-start   gap-4 group">
             <div className="mt-1.5 w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-teal-500 transition-colors duration-300">
               <div className="w-2 h-2 bg-teal-500 rounded-full group-hover:bg-white transition-colors duration-300"></div>
             </div>
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+            <p className="text-gray-700  text-sm md:text-base leading-relaxed">
               {credential}
             </p>
           </div>

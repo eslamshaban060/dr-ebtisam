@@ -89,7 +89,7 @@ export default function DoctorHeroSection({ lang = "ar" }) {
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <SlideContent slide={slides[currentSlide]} />
+          <SlideContent slide={slides[currentSlide]} lang={lang} />
           <SlideImage
             slide={slides[currentSlide]}
             currentSlide={currentSlide}

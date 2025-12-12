@@ -100,7 +100,7 @@ export default function ServicesSection({ lang = "ar" }) {
           </p>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3 flex-wrap">
-            <span className="text-3xl md:text-4xl">🩺</span>
+            <span className="text-3xl hidden lg:block md:text-4xl">🩺</span>
             <span>
               {lang === "ar"
                 ? "ملتزمون بصحة سمعك وتوازنك"
@@ -109,12 +109,13 @@ export default function ServicesSection({ lang = "ar" }) {
           </h2>
 
           <p
-            className={`text-gray-600 text-base md:text-lg max-w-4xl mx-auto leading-relaxed ${lang === "ar" ? "text-center" : "text-left"}`}
+            className={`text-gray-600 text-base md:text-lg max-w-4xl mx-auto leading-relaxed ${
+              lang === "ar" ? "text-center" : "text-center"
+            }`}
           >
-            {" "}
             {lang === "ar"
-              ? "في عيادة الدكتورة ابتسام، كل خدمة مصممة بدقة وعناية وخبرة عميق لصحة السمع والتوازن. يبدأ من التقييمات الشاملة للسمع وصولاً إلى العلاجات المتقدمة لاضطرابات التوازن، نقدم رعاية شخصية تركز على راحتك ورفاهيتك على المدى الطويل."
-              : "At Dr. Ebtisam's clinic, each service is carefully and expertly designed for hearing and balance health. From comprehensive hearing assessments to advanced balance disorder treatments, we provide personalized care focused on your comfort and long-term well-being."}
+              ? "في عيادة الدكتورة ابتسام، نقدم خدمات دقيقة وشاملة لصحة السمع والتوازن، من تقييمات السمع إلى أحدث العلاجات، مع رعاية شخصية تضمن راحتك واهتمامنا بك."
+              : "At Dr. Ebtisam's clinic, we provide precise and comprehensive hearing and balance services—from assessments to advanced treatments—with personalized care focused on your comfort."}
           </p>
         </div>
 
@@ -123,7 +124,7 @@ export default function ServicesSection({ lang = "ar" }) {
           {services.map((service) => (
             <div key={service.id} className="px-3">
               <div
-                className={`group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden h-full ${lang === "ar" ? "text-right" : "text-left"}`}
+                className={`group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden h-full lg:h-[350px] ${lang === "ar" ? "text-right" : "text-left"}`}
               >
                 {/* نص الدايرة – مكبرة – وشفافيتها أعلى – وتتغير حسب اللغة */}
                 <span
@@ -156,13 +157,13 @@ export default function ServicesSection({ lang = "ar" }) {
                     {service.details.map((detail, idx) => (
                       <li
                         key={idx}
-                        className={`flex items-start gap-2 text-sm text-gray-600 ${
-                          lang === "ar" ? "flex-row-reverse" : ""
+                        className={`flex items-start gap-2  text-gray-600 ${
+                          lang === "ar"
+                            ? "flex-row-reverse text-[18px]"
+                            : " text-[15px]"
                         }`}
                       >
-                        <span className="text-cyan-500 mt-1 flex-shrink-0">
-                          •
-                        </span>
+                        <span className="bg-cyan-500  rounded-full p-1 mt-3 flex-shrink-0"></span>
                         <span className="leading-relaxed">{detail}</span>
                       </li>
                     ))}
@@ -174,7 +175,7 @@ export default function ServicesSection({ lang = "ar" }) {
         </Slider>
 
         {/* زر الحجز */}
-        <div className="text-center mt-12 md:mt-16">
+        <div className="text-center hidden lg:block mt-12 md:mt-16">
           <button className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
             <span>
               {lang === "ar" ? "احجز موعد الآن" : "Book Appointment Now"}
