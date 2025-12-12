@@ -1,18 +1,18 @@
 import React from "react";
-import Link from "next/link";
-
+import HealthcareLanding from "@/component2/HealthcareLanding";
+import Page from "@/component2/testmonials";
+import Footer from "@/component2/footer";
+import DoctorHeroSection from "@/component2/about/about";
+import ServicesSection from "@/component2/services/services";
 const page = () => {
   return (
-    <div className=" bg-[var(--gr)] flex justify-center items-center w-[100vw] h-[100vh] ">
-      <Link className=" block !px-5 rounded-xl bg-white !py-3" href="/login">
-        الذهاب الى تسجيل الدخول
-      </Link>
-      <Link
-        className=" block !px-5 rounded-xl bg-white !py-3"
-        href="/dashboard"
-      >
-        dashboard{" "}
-      </Link>
+    <div>
+      {/* Aa@12345 */}
+      <HealthcareLanding lang="ar" />
+      <DoctorHeroSection lang="ar" />
+      <ServicesSection lang="ar" />
+      <Page lang="ar" />
+      <Footer lang="ar" />
     </div>
   );
 };

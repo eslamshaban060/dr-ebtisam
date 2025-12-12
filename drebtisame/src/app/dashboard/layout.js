@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }) {
 
   return (
     <div lang="ar" dir="rtl">
-      <div className="bg-[var(--lb)] h-dvh overflow-hidden">
+      <div className="bg-[var(--lb)] h-dvh overflow-hidden ">
         <main className="bg-[var(--lb)] w-full grid grid-cols-12 gap-5 lg:p-10 lg:pb-4 px-5 py-2 pb-2">
           {/* Sidebar */}
           <aside className="lg:col-span-3 max-h-[100vh] col-span-0">
@@ -54,7 +54,7 @@ export default function DashboardLayout({ children }) {
           </aside>
 
           {/* Main content */}
-          <section className="lg:col-span-9 col-span-12 flex flex-col gap-10">
+          <section className="lg:col-span-9  col-span-12 flex flex-col gap-10">
             <TopBar lan="ar" user={User} />
             <div className="h-full w-[100%]">{children}</div>
           </section>

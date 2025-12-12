@@ -1,14 +1,18 @@
 import React from "react";
-import Link from "next/link";
-
+import HealthcareLanding from "@/component2/HealthcareLanding";
+import Page from "@/component2/testmonials";
+import Footer from "@/component2/footer";
+import DoctorHeroSection from "@/component2/about/about";
+import ServicesSection from "@/component2/services/services";
 const page = () => {
   return (
-    <div className=" bg-amber-800 text-3xl text-white  py-[50px]">
-      hello with you ya shabab and are you ok ?{" "}
-      <Link href="/" className=" block">
-        {" "}
-        go to arabic{" "}
-      </Link>
+    <div>
+      <HealthcareLanding lang="en" />
+      <DoctorHeroSection lang="en" />
+      <ServicesSection lang="en" />
+
+      <Page lang="en" />
+      <Footer lang="en" />
     </div>
   );
 };
