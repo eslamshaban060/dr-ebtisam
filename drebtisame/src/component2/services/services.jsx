@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { servicesData } from "./servicesData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import Link from "next/link";
 function NextArrow(props) {
   const { onClick } = props;
   return (
@@ -85,6 +85,7 @@ export default function ServicesSection({ lang = "ar" }) {
 
   return (
     <section
+      id="services"
       className="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white overflow-hidden"
       dir={lang === "ar" ? "rtl" : "ltr"}
     >
@@ -176,25 +177,27 @@ export default function ServicesSection({ lang = "ar" }) {
 
         {/* زر الحجز */}
         <div className="text-center hidden lg:block mt-12 md:mt-16">
-          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
-            <span>
-              {lang === "ar" ? "احجز موعد الآن" : "Book Appointment Now"}
-            </span>
+          <Link href="#appoint">
+            <button className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+              <span>
+                {lang === "ar" ? "احجز موعد الآن" : "Book Appointment Now"}
+              </span>
 
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          </Link>
         </div>
       </div>
     </section>

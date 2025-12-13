@@ -14,9 +14,11 @@ export default function Navbar({ lang }) {
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Desktop Contact Button */}
-      <button className="hidden md:block px-6 py-2 border-2 border-gray-400 rounded-full text-gray-700 hover:bg-white transition">
-        {isAr ? "تواصل معنا" : "Contact Us"}
-      </button>
+      <Link href="#contact">
+        <button className="hidden md:block px-6 py-2 border-2 border-gray-400 rounded-full text-gray-700 hover:bg-white transition">
+          {isAr ? "تواصل معنا" : "Contact Us"}
+        </button>
+      </Link>
 
       {/* Mobile Menu Button */}
       <button
@@ -32,19 +34,19 @@ export default function Navbar({ lang }) {
           {isAr ? "الرئيسية" : "Home"}
         </Link>
         <Link
-          href="/about"
+          href="#about"
           className="text-gray-700 hover:text-teal-500 transition"
         >
           {isAr ? "من نحن" : "About"}
         </Link>
         <Link
-          href="/services"
+          href="#services"
           className="text-gray-700 hover:text-teal-500 transition"
         >
           {isAr ? "الخدمات" : "Services"}
         </Link>
         <Link
-          href="/blog"
+          href={isAr ? "/blog" : "/en/blog"}
           className="text-gray-700 hover:text-teal-500 transition"
         >
           {isAr ? "المدونة" : "Blog"}
@@ -112,19 +114,19 @@ export default function Navbar({ lang }) {
               {isAr ? "الرئيسية" : "Home"}
             </Link>
             <Link
-              href="/about"
+              href="#about"
               className="text-lg text-gray-700 hover:text-teal-500 transition py-3 border-b border-gray-200"
             >
               {isAr ? "من نحن" : "About"}
             </Link>
             <Link
-              href="/services"
+              href="#services"
               className="text-lg text-gray-700 hover:text-teal-500 transition py-3 border-b border-gray-200"
             >
               {isAr ? "الخدمات" : "Services"}
             </Link>
             <Link
-              href="/blog"
+              href={isAr ? "/blog" : "/en/blog"}
               className="text-lg text-gray-700 hover:text-teal-500 transition py-3 border-b border-gray-200"
             >
               {isAr ? "المدونة" : "Blog"}
@@ -150,9 +152,11 @@ export default function Navbar({ lang }) {
               </div>
             </div>
 
-            <button className="mt-4 px-6 py-3 bg-teal-400 text-white rounded-lg hover:bg-teal-500 transition">
-              {isAr ? "تواصل معنا" : "Contact Us"}
-            </button>
+            <Link href="#contact">
+              <button className="mt-4 px-6 py-3 bg-teal-400 text-white rounded-lg hover:bg-teal-500 transition">
+                {isAr ? "تواصل معنا" : "Contact Us"}
+              </button>
+            </Link>
           </div>
         </div>
       </div>

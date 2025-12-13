@@ -13,6 +13,7 @@ import {
   XCircle,
   AlertCircle,
 } from "lucide-react";
+import { supabase } from "@/utils/supabase/supabase";
 
 export default function ContactSection({ lang = "ar" }) {
   const isAr = lang === "ar";
@@ -20,6 +21,7 @@ export default function ContactSection({ lang = "ar" }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -35,6 +37,7 @@ export default function ContactSection({ lang = "ar" }) {
       ? "تواصل مباشر مع الدكتورة"
       : "Direct Contact with Doctor",
     namePlaceholder: isAr ? "اسمك الكامل" : "Your Full Name",
+    phonePlaceholder: isAr ? "رقم التلفون " : "Your Phone Number  ",
     emailPlaceholder: isAr ? "بريدك الإلكتروني" : "Your Email",
     messagePlaceholder: isAr
       ? "اكتب رسالتك أو استفسارك هنا..."
@@ -52,6 +55,9 @@ export default function ContactSection({ lang = "ar" }) {
       nameShort: isAr
         ? "الاسم يجب أن يكون 3 أحرف على الأقل"
         : "Name must be at least 3 characters",
+      phonelength: isAr
+        ? "الرقم  يجب ان يتكون من 11 رقم "
+        : "Please enter correct number",
       emailRequired: isAr
         ? "الرجاء إدخال البريد الإلكتروني"
         : "Please enter your email",
@@ -87,6 +93,9 @@ export default function ContactSection({ lang = "ar" }) {
     if (!formData.name.trim()) newErrors.name = texts.errors.nameRequired;
     else if (formData.name.trim().length < 3)
       newErrors.name = texts.errors.nameShort;
+    if (!formData.phone.trim()) newErrors.phone = texts.errors.nameRequired;
+    else if (formData.phone.trim().length < 11)
+      newErrors.phone = texts.errors.phonelength;
 
     if (!formData.email.trim()) newErrors.email = texts.errors.emailRequired;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
@@ -101,51 +110,101 @@ export default function ContactSection({ lang = "ar" }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
-    if (validateForm()) {
-      console.log("Form submitted:", formData);
-      showToast(texts.toastSuccess, "success");
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      showToast(texts.toastError, "error");
-    }
-  };
+  // const handleSubmit = async () => {
+  //   if (validateForm()) {
+  //     const { error } = await supabase.from("messages").insert([
+  //       {
+  //         name: formData.name,
+  //         email: formData.email,
+  //         whatsapp: formData.phone,
+  //         messagecontent: formData.message,
+  //       },
+  //     ]);
+  //     showToast(texts.toastSuccess, "success");
+  //     setFormData({ name: "", email: "", message: "", phone: "" });
+  //   } else {
+  //     showToast(texts.toastError, "error");
+  //   }
+  // };
 
+  const handleSubmit = async () => {
+    if (!validateForm()) {
+      showToast(texts.toastError, "error");
+      return;
+    }
+
+    // 1️⃣ إدخال الرسالة في messages
+    const { error: messageError } = await supabase.from("messages").insert([
+      {
+        name: formData.name,
+        email: formData.email,
+        whatsapp: formData.phone,
+        messagecontent: formData.message,
+      },
+    ]);
+
+    if (messageError) {
+      showToast("Error saving message", "error");
+      return;
+    }
+
+    // 2️⃣ إدخال Notification
+    const { error: notificationError } = await supabase
+      .from("notification")
+      .insert([
+        {
+          title: "New Contact Message",
+          entitle: "New Message",
+          messagecontent: formData.message,
+          link: "/dashboard/messages",
+          type: "mes",
+        },
+      ]);
+
+    if (notificationError) {
+      showToast("Error saving notification", "error");
+      return;
+    }
+
+    showToast(texts.toastSuccess, "success");
+    setFormData({ name: "", email: "", message: "", phone: "" });
+  };
+  // -------------------------------------------------------------------
   const socialLinks = [
     {
       icon: <MessageCircle className="w-4 h-4" />,
       color: "bg-green-500 hover:bg-green-600",
-      link: "https://wa.me/201234567890",
+      link: "https://wa.me/+201128812068",
       name: isAr ? "واتساب" : "WhatsApp",
     },
     {
       icon: <Phone className="w-4 h-4" />,
       color: "bg-blue-500 hover:bg-blue-600",
-      link: "tel:+201234567890",
+      link: "tel:+201128812068",
       name: isAr ? "هاتف" : "Phone",
     },
     {
       icon: <Mail className="w-4 h-4" />,
       color: "bg-purple-500 hover:bg-purple-600",
-      link: "mailto:info@dr-ibtisam.com",
+      link: "e_hossam1999@yahoo.com",
       name: isAr ? "بريد" : "Email",
     },
     {
       icon: <Facebook className="w-4 h-4" />,
       color: "bg-blue-600 hover:bg-blue-700",
-      link: "https://facebook.com",
+      link: "https://www.facebook.com/Prof.Dr.Ebtessam.Nada/",
       name: "Facebook",
     },
     {
       icon: <Youtube className="w-4 h-4" />,
       color: "bg-red-600 hover:bg-red-700",
-      link: "https://youtube.com",
+      link: "https://www.youtube.com/watch?v=2LJGzu5QEfI&utm_source=chatgpt.com",
       name: "YouTube",
     },
     {
       icon: <Instagram className="w-4 h-4" />,
       color: "bg-pink-600 hover:bg-pink-700",
-      link: "https://instagram.com",
+      link: "https://www.instagram.com/dr_ebtessam/?utm_source=chatgpt.com",
       name: "Instagram",
     },
   ];
@@ -158,6 +217,7 @@ export default function ContactSection({ lang = "ar" }) {
 
   return (
     <section
+      id="contact"
       className="py-16 md:py-20 px-4 bg-gradient-to-b from-white to-blue-50"
       dir={isAr ? "rtl" : "ltr"}
     >
@@ -256,19 +316,34 @@ export default function ContactSection({ lang = "ar" }) {
                     {errors.name}
                   </p>
                 )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {" "}
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 bg-gray-50 rounded-xl border-2 ${
+                      errors.email
+                        ? "border-red-500"
+                        : "border-transparent focus:border-teal-500"
+                    } focus:bg-white focus:outline-none transition-all`}
+                    placeholder={texts.emailPlaceholder}
+                  />{" "}
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 bg-gray-50 rounded-xl border-2 ${
+                      errors.phone
+                        ? "border-red-500"
+                        : "border-transparent focus:border-teal-500"
+                    } focus:bg-white focus:outline-none transition-all`}
+                    placeholder={texts.phonePlaceholder}
+                  />
+                </div>
 
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-gray-50 rounded-xl border-2 ${
-                    errors.email
-                      ? "border-red-500"
-                      : "border-transparent focus:border-teal-500"
-                  } focus:bg-white focus:outline-none transition-all`}
-                  placeholder={texts.emailPlaceholder}
-                />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1 mr-2">
                     {errors.email}

@@ -227,6 +227,7 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
 
   return (
     <section
+      id="appoint"
       className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-cyan-50 via-blue-50 to-white overflow-hidden"
       dir={lang === "ar" ? "rtl" : "ltr"}
     >

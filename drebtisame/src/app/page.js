@@ -5,7 +5,8 @@ import Footer from "@/component2/footer";
 import DoctorHeroSection from "@/component2/about/about";
 import ServicesSection from "@/component2/services/services";
 import BookingSection from "@/component2/appointment";
-import ContactSection from "@/component2/contact";
+import ContactSection from "@/component2/contact/contact";
+import BlogSection from "@/component2/blog/blogs";
 const page = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const page = () => {
       <DoctorHeroSection lang="ar" />
       <ServicesSection lang="ar" />
       <BookingSection lang="ar" />
+      <BlogSection lang="ar" />
       <TestimonialsPage lang="ar" />
       <ContactSection lang="ar" />
       <Footer lang="ar" />

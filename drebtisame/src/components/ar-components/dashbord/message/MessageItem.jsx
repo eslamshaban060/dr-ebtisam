@@ -32,10 +32,10 @@ const MessageItem = ({ message, onDelete, lan }) => {
           {message.created_at.slice(0, 10)}
         </span>
         <span className="md:text-[18px] md:block hidden xl:hidden text-[14px]">
-          {message.title.slice(0, 12) + "..."}
+          {message.messagecontent.slice(0, 12) + "..."}
         </span>
         <span className="md:text-[18px] hidden xl:block text-[14px]">
-          {message.title.slice(0, 25) + "..."}
+          {message.messagecontent.slice(0, 25) + "..."}
         </span>
         <div className="flex gap-2">
           <button

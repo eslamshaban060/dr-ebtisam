@@ -37,6 +37,7 @@ export default function DoctorHeroSection({ lang = "ar" }) {
 
   return (
     <section
+      id="about"
       className="relative min-h-screen bg-white overflow-hidden py-12 md:py-20 px-4 sm:px-6 lg:px-8"
       dir={lang === "ar" ? "rtl" : "ltr"}
     >

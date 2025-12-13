@@ -141,6 +141,7 @@ export default function TestimonialsPage({ lang = "ar" }) {
 
   return (
     <div
+      id="reviews"
       className="min-h-[40vh] bg-gradient-to-b from-cyan-50 via-blue-50 to-white pb-8 pt-16 px-4"
       dir={isAr ? "rtl" : "ltr"}
     >

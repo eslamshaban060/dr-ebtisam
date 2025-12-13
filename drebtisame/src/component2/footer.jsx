@@ -42,18 +42,26 @@ export default function Footer({ lang = "ar" }) {
   const navLinks = [
     { text: t.home, href: "/" },
     { text: t.services, href: "#services" },
-    { text: t.blog, href: "#blog" },
+    { text: t.blog, href: "/blog" },
     { text: t.reviews, href: "#reviews" },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/Prof.Dr.Ebtessam.Nada/",
+      label: "Facebook",
+    },
     {
       icon: MessageCircle,
-      href: "https://wa.me/1234567890",
+      href: "https://wa.me/+201128812068",
       label: "WhatsApp",
     },
-    { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+    {
+      icon: Youtube,
+      href: "https://www.youtube.com/watch?v=2LJGzu5QEfI&utm_source=chatgpt.com",
+      label: "YouTube",
+    },
   ];
 
   return (
@@ -101,7 +109,7 @@ export default function Footer({ lang = "ar" }) {
                 {t.chatText}
               </p>
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/+201128812068"
                 className="inline-block bg-white text-cyan-700 px-6 py-2 rounded-full font-semibold hover:bg-cyan-50 hover:shadow-lg transition-all duration-300 text-sm"
               >
                 {t.chat}

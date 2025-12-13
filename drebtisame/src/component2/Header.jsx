@@ -35,7 +35,7 @@ export default function Header({ lang = "ar" }) {
     { text: t.home, href: "/" },
     { text: t.about, href: "#about" },
     { text: t.services, href: "#services" },
-    { text: t.blog, href: "#blog" },
+    { text: t.blog, href: "/blog" },
   ];
 
   return (

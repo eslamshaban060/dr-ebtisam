@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 export default function Hero({ lang = "ar" }) {
   const isAr = lang === "ar";
 
@@ -40,12 +40,16 @@ export default function Hero({ lang = "ar" }) {
             : "At Dr. Ebtisam Nada’s Clinics, we combine advanced medical expertise with modern technology to provide precise diagnosis and specialized treatment for hearing and balance disorders."}
         </p>
         <div className="flex gap-4 justify-center md:justify-start">
-          <button className="px-6 md:px-8 py-3 bg-teal-400 text-white rounded-lg hover:bg-teal-500 transition shadow-lg hover:scale-105 transform duration-300">
-            {isAr ? "تواصل معنا" : "Contact Us"}
-          </button>
-          <button className="px-6 md:px-8 py-3 border-2 border-gray-400 text-gray-700 rounded-lg hover:bg-white transition hover:scale-105 transform duration-300">
-            {isAr ? "اكتشف المزيد" : "Learn More"}
-          </button>
+          <Link href="#contact">
+            <button className="px-6 md:px-8 py-3 bg-teal-400 text-white rounded-lg hover:bg-teal-500 transition shadow-lg hover:scale-105 transform duration-300">
+              {isAr ? "تواصل معنا" : "Contact Us"}
+            </button>
+          </Link>
+          <Link href={isAr ? "/login" : "/en/login"}>
+            <button className="px-6 md:px-8 py-3 border-2 border-gray-400 text-gray-700 rounded-lg hover:bg-white transition hover:scale-105 transform duration-300">
+              {isAr ? " تسجيل دخول " : " Login Now"}
+            </button>
+          </Link>
         </div>
       </div>
 
