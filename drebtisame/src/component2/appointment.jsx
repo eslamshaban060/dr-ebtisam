@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import {
   Calendar,
@@ -7,6 +8,9 @@ import {
   User,
   Phone,
   MessageSquare,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
 } from "lucide-react";
 
 export default function BookingSection() {
@@ -19,15 +23,20 @@ export default function BookingSection() {
     notes: "",
   });
 
+  const [toast, setToast] = useState({ show: false, type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const clinics = {
     nasr: {
       name: "عيادة مدينة نصر",
       location: "مدينة نصر، القاهرة",
+      whatsapp: "201222592471",
       schedule: [{ day: "الأحد", times: ["4pm - 6pm"] }],
     },
     october: {
       name: "عيادة ميت غمر",
       location: "ميت غمر، الدقهلية",
+      whatsapp: "201128812068",
       schedule: [
         { day: "السبت", times: ["2pm - 6pm"] },
         { day: "الأربعاء", times: ["2pm - 6pm"] },
@@ -35,10 +44,125 @@ export default function BookingSection() {
     },
   };
 
+  // دالة عرض التوست
+  const showToast = (type, message) => {
+    setToast({ show: true, type, message });
+    setTimeout(() => {
+      setToast({ show: false, type: "", message: "" });
+    }, 5000);
+  };
+
+  // دالة التحقق من البيانات
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      showToast("error", "الرجاء إدخال الاسم الكامل");
+      return false;
+    }
+
+    if (formData.name.trim().length < 3) {
+      showToast("error", "الاسم يجب أن يكون 3 أحرف على الأقل");
+      return false;
+    }
+
+    const phoneRegex = /^(01)[0-9]{9}$/;
+    if (!formData.phone.trim()) {
+      showToast("error", "الرجاء إدخال رقم الهاتف");
+      return false;
+    }
+
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
+      showToast(
+        "error",
+        "رقم الهاتف غير صحيح. يجب أن يبدأ بـ 01 ويتكون من 11 رقم"
+      );
+      return false;
+    }
+
+    if (!formData.clinic) {
+      showToast("error", "الرجاء اختيار العيادة");
+      return false;
+    }
+
+    if (!formData.day) {
+      showToast("error", "الرجاء اختيار اليوم");
+      return false;
+    }
+
+    if (!formData.time) {
+      showToast("error", "الرجاء اختيار الوقت");
+      return false;
+    }
+
+    return true;
+  };
+
+  // دالة إرسال الرسالة على واتساب
+  const sendWhatsApp = () => {
+    const selectedClinic = clinics[formData.clinic];
+    const whatsappNumber = selectedClinic.whatsapp;
+
+    const message = `
+🏥 *حجز موعد جديد*
+
+👤 *الاسم:* ${formData.name}
+📱 *رقم الهاتف:* ${formData.phone}
+
+🏢 *العيادة:* ${selectedClinic.name}
+📍 *الموقع:* ${selectedClinic.location}
+
+📅 *اليوم:* ${formData.day}
+⏰ *الوقت:* ${formData.time}
+
+${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
+
+---
+تم الإرسال من موقع الدكتورة ابتسام
+`.trim();
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
+  // دالة إرسال النموذج
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Booking data:", formData);
-    alert("تم إرسال طلب الحجز بنجاح! سيتم التواصل معك قريباً.");
+
+    // التحقق من البيانات
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    showToast("info", "جاري إرسال طلب الحجز...");
+
+    // محاكاة إرسال البيانات
+    setTimeout(() => {
+      try {
+        // إرسال واتساب
+        sendWhatsApp();
+
+        showToast(
+          "success",
+          "تم إرسال طلب الحجز بنجاح! سيتم التواصل معك قريباً"
+        );
+
+        // إعادة تعيين النموذج
+        setFormData({
+          name: "",
+          phone: "",
+          clinic: "nasr",
+          day: "",
+          time: "",
+          notes: "",
+        });
+      } catch (error) {
+        showToast("error", "حدث خطأ أثناء الإرسال. الرجاء المحاولة مرة أخرى");
+      } finally {
+        setIsSubmitting(false);
+      }
+    }, 1000);
   };
 
   const handleChange = (e) => {
@@ -60,6 +184,48 @@ export default function BookingSection() {
       className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-cyan-50 via-blue-50 to-white overflow-hidden"
       dir="rtl"
     >
+      {/* Toast Notification */}
+      {toast.show && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 animate-slideDown">
+          <div
+            className={`flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl border-2 min-w-[320px] ${
+              toast.type === "success"
+                ? "bg-green-50 border-green-500 text-green-800"
+                : toast.type === "error"
+                  ? "bg-red-50 border-red-500 text-red-800"
+                  : "bg-blue-50 border-blue-500 text-blue-800"
+            }`}
+          >
+            {toast.type === "success" && (
+              <CheckCircle className="w-6 h-6 flex-shrink-0" />
+            )}
+            {toast.type === "error" && (
+              <XCircle className="w-6 h-6 flex-shrink-0" />
+            )}
+            {toast.type === "info" && (
+              <AlertCircle className="w-6 h-6 flex-shrink-0" />
+            )}
+            <p className="font-semibold">{toast.message}</p>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -20px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
+        }
+      `}</style>
+
       <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
@@ -143,7 +309,7 @@ export default function BookingSection() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 text-white shadow-lg">
+            <div className="bg-gradient-to-br from-cyan-300 to-[#00968F] rounded-2xl p-6 text-white shadow-lg">
               <h4 className="text-xl font-bold mb-3">💡 نصيحة مهمة</h4>
               <p className="text-cyan-50 leading-relaxed">
                 يُرجى الوصول قبل 10 دقائق من موعدك. في حالة التأخير أو الإلغاء،
@@ -152,12 +318,13 @@ export default function BookingSection() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
             <div className="space-y-6">
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <User className="w-5 h-5 text-cyan-600" />
                   الاسم الكامل
+                  <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -173,13 +340,15 @@ export default function BookingSection() {
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <Phone className="w-5 h-5 text-cyan-600" />
                   رقم الهاتف
+                  <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="أدخل رقم هاتفك"
+                  placeholder="01xxxxxxxxx"
+                  maxLength="11"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 outline-none transition-all duration-200"
                 />
               </div>
@@ -188,6 +357,7 @@ export default function BookingSection() {
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <MapPin className="w-5 h-5 text-cyan-600" />
                   اختر العيادة
+                  <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="clinic"
@@ -204,6 +374,7 @@ export default function BookingSection() {
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <Calendar className="w-5 h-5 text-cyan-600" />
                   اختر اليوم
+                  <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="day"
@@ -221,10 +392,11 @@ export default function BookingSection() {
               </div>
 
               {formData.day && (
-                <div>
+                <div className="animate-fadeIn">
                   <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                     <Clock className="w-5 h-5 text-cyan-600" />
                     اختر الوقت
+                    <span className="text-red-500">*</span>
                   </label>
                   <select
                     name="time"
@@ -259,10 +431,13 @@ export default function BookingSection() {
 
               <button
                 onClick={handleSubmit}
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className={`w-full bg-gradient-to-r from-cyan-500 to-[#00968F] hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 ${
+                  isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                }`}
               >
                 <Calendar className="w-5 h-5" />
-                <span>تأكيد الحجز</span>
+                <span>{isSubmitting ? "جاري الإرسال..." : "تأكيد الحجز"}</span>
               </button>
             </div>
           </div>
