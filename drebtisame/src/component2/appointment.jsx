@@ -13,7 +13,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-export default function BookingSection() {
+export default function BookingSection({ lang = "ar" }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -26,25 +26,46 @@ export default function BookingSection() {
   const [toast, setToast] = useState({ show: false, type: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // ترجمة الأيام
+  const days = {
+    ar: {
+      sun: "الأحد",
+      mon: "الإثنين",
+      tue: "الثلاثاء",
+      wed: "الأربعاء",
+      thu: "الخميس",
+      fri: "الجمعة",
+      sat: "السبت",
+    },
+    en: {
+      sun: "Sunday",
+      mon: "Monday",
+      tue: "Tuesday",
+      wed: "Wednesday",
+      thu: "Thursday",
+      fri: "Friday",
+      sat: "Saturday",
+    },
+  };
+
   const clinics = {
     nasr: {
-      name: "عيادة مدينة نصر",
-      location: "مدينة نصر، القاهرة",
+      name: { ar: "عيادة مدينة نصر", en: "Nasr City Clinic" },
+      location: { ar: "مدينة نصر، القاهرة", en: "Nasr City, Cairo" },
       whatsapp: "201222592471",
-      schedule: [{ day: "الأحد", times: ["4pm - 6pm"] }],
+      schedule: [{ day: "sun", times: ["4pm - 6pm"] }],
     },
     october: {
-      name: "عيادة ميت غمر",
-      location: "ميت غمر، الدقهلية",
+      name: { ar: "عيادة ميت غمر", en: "Mit Ghamr Clinic" },
+      location: { ar: "ميت غمر، الدقهلية", en: "Mit Ghamr, Dakahlia" },
       whatsapp: "201128812068",
       schedule: [
-        { day: "السبت", times: ["2pm - 6pm"] },
-        { day: "الأربعاء", times: ["2pm - 6pm"] },
+        { day: "sat", times: ["2pm - 6pm"] },
+        { day: "wed", times: ["2pm - 6pm"] },
       ],
     },
   };
 
-  // دالة عرض التوست
   const showToast = (type, message) => {
     setToast({ show: true, type, message });
     setTimeout(() => {
@@ -52,71 +73,95 @@ export default function BookingSection() {
     }, 5000);
   };
 
-  // دالة التحقق من البيانات
   const validateForm = () => {
     if (!formData.name.trim()) {
-      showToast("error", "الرجاء إدخال الاسم الكامل");
+      showToast(
+        "error",
+        lang === "ar"
+          ? "الرجاء إدخال الاسم الكامل"
+          : "Please enter your full name"
+      );
       return false;
     }
 
     if (formData.name.trim().length < 3) {
-      showToast("error", "الاسم يجب أن يكون 3 أحرف على الأقل");
+      showToast(
+        "error",
+        lang === "ar"
+          ? "الاسم يجب أن يكون 3 أحرف على الأقل"
+          : "Name must be at least 3 characters"
+      );
       return false;
     }
 
     const phoneRegex = /^(01)[0-9]{9}$/;
     if (!formData.phone.trim()) {
-      showToast("error", "الرجاء إدخال رقم الهاتف");
+      showToast(
+        "error",
+        lang === "ar"
+          ? "الرجاء إدخال رقم الهاتف"
+          : "Please enter your phone number"
+      );
       return false;
     }
 
     if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
       showToast(
         "error",
-        "رقم الهاتف غير صحيح. يجب أن يبدأ بـ 01 ويتكون من 11 رقم"
+        lang === "ar"
+          ? "رقم الهاتف غير صحيح. يجب أن يبدأ بـ 01 ويتكون من 11 رقم"
+          : "Invalid phone number. Must start with 01 and be 11 digits"
       );
       return false;
     }
 
     if (!formData.clinic) {
-      showToast("error", "الرجاء اختيار العيادة");
+      showToast(
+        "error",
+        lang === "ar" ? "الرجاء اختيار العيادة" : "Please select a clinic"
+      );
       return false;
     }
 
     if (!formData.day) {
-      showToast("error", "الرجاء اختيار اليوم");
+      showToast(
+        "error",
+        lang === "ar" ? "الرجاء اختيار اليوم" : "Please select a day"
+      );
       return false;
     }
 
     if (!formData.time) {
-      showToast("error", "الرجاء اختيار الوقت");
+      showToast(
+        "error",
+        lang === "ar" ? "الرجاء اختيار الوقت" : "Please select a time"
+      );
       return false;
     }
 
     return true;
   };
 
-  // دالة إرسال الرسالة على واتساب
   const sendWhatsApp = () => {
     const selectedClinic = clinics[formData.clinic];
     const whatsappNumber = selectedClinic.whatsapp;
 
     const message = `
-🏥 *حجز موعد جديد*
+🏥 *${lang === "ar" ? "حجز موعد جديد" : "New Booking"}*
 
-👤 *الاسم:* ${formData.name}
-📱 *رقم الهاتف:* ${formData.phone}
+👤 *${lang === "ar" ? "الاسم" : "Name"}:* ${formData.name}
+📱 *${lang === "ar" ? "رقم الهاتف" : "Phone"}:* ${formData.phone}
 
-🏢 *العيادة:* ${selectedClinic.name}
-📍 *الموقع:* ${selectedClinic.location}
+🏢 *${lang === "ar" ? "العيادة" : "Clinic"}:* ${selectedClinic.name[lang]}
+📍 *${lang === "ar" ? "الموقع" : "Location"}:* ${selectedClinic.location[lang]}
 
-📅 *اليوم:* ${formData.day}
-⏰ *الوقت:* ${formData.time}
+📅 *${lang === "ar" ? "اليوم" : "Day"}:* ${days[lang][formData.day]}
+⏰ *${lang === "ar" ? "الوقت" : "Time"}:* ${formData.time}
 
-${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
+${formData.notes ? `📝 *${lang === "ar" ? "ملاحظات" : "Notes"}:*\n${formData.notes}` : ""}
 
 ---
-تم الإرسال من موقع الدكتورة ابتسام
+${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسام" : "Sent from Dr. Ebtisam's website"}
 `.trim();
 
     const encodedMessage = encodeURIComponent(message);
@@ -125,30 +170,26 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
     window.open(whatsappUrl, "_blank");
   };
 
-  // دالة إرسال النموذج
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // التحقق من البيانات
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
-    showToast("info", "جاري إرسال طلب الحجز...");
+    showToast(
+      "info",
+      lang === "ar" ? "جاري إرسال طلب الحجز..." : "Sending booking request..."
+    );
 
-    // محاكاة إرسال البيانات
     setTimeout(() => {
       try {
-        // إرسال واتساب
         sendWhatsApp();
-
         showToast(
           "success",
-          "تم إرسال طلب الحجز بنجاح! سيتم التواصل معك قريباً"
+          lang === "ar"
+            ? "تم إرسال طلب الحجز بنجاح! سيتم التواصل معك قريباً"
+            : "Booking request sent successfully! You will be contacted soon."
         );
-
-        // إعادة تعيين النموذج
         setFormData({
           name: "",
           phone: "",
@@ -158,7 +199,12 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
           notes: "",
         });
       } catch (error) {
-        showToast("error", "حدث خطأ أثناء الإرسال. الرجاء المحاولة مرة أخرى");
+        showToast(
+          "error",
+          lang === "ar"
+            ? "حدث خطأ أثناء الإرسال. الرجاء المحاولة مرة أخرى"
+            : "An error occurred. Please try again."
+        );
       } finally {
         setIsSubmitting(false);
       }
@@ -182,9 +228,8 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
   return (
     <section
       className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-cyan-50 via-blue-50 to-white overflow-hidden"
-      dir="rtl"
+      dir={lang === "ar" ? "rtl" : "ltr"}
     >
-      {/* Toast Notification */}
       {toast.show && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 animate-slideDown">
           <div
@@ -212,118 +257,122 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
 
       <style>{`
         @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translate(-50%, -20px);
-          }
-          to {
-            opacity: 1;
-            transform: translate(-50%, 0);
-          }
+          from { opacity: 0; transform: translate(-50%, -20px); }
+          to { opacity: 1; transform: translate(-50%, 0); }
         }
-        .animate-slideDown {
-          animation: slideDown 0.3s ease-out;
-        }
+        .animate-slideDown { animation: slideDown 0.3s ease-out; }
       `}</style>
 
       <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
       <div className="relative max-w-7xl mx-auto">
+        {/* عنوان */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <Calendar className="w-4 h-4" />
-            <span>احجز موعدك</span>
+            <span>
+              {lang === "ar" ? "احجز موعدك" : "Book Your Appointment"}
+            </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            احجز موعدك الآن
+            {lang === "ar" ? "احجز موعدك الآن" : "Book Your Appointment Now"}
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            املأ البيانات أدناه وسنتواصل معك لتأكيد موعدك في أقرب وقت
+            {lang === "ar"
+              ? "املأ البيانات أدناه وسنتواصل معك لتأكيد موعدك في أقرب وقت"
+              : "Fill in the form below and we will contact you to confirm your appointment."}
           </p>
         </div>
 
+        {/* العيادات + النموذج */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
+          {/* معلومات العيادات */}
           <div className="space-y-6">
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-cyan-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
-                    عيادة مدينة نصر
-                  </h3>
-                  <p className="text-gray-600 text-sm">مدينة نصر، القاهرة</p>
-                </div>
-              </div>
+            {Object.keys(clinics).map((key, idx) => {
+              const clinic = clinics[key];
+              const colors =
+                key === "nasr"
+                  ? [
+                      "from-cyan-500",
+                      "to-blue-500",
+                      "bg-cyan-50",
+                      "text-cyan-600",
+                    ]
+                  : [
+                      "from-blue-500",
+                      "to-purple-500",
+                      "bg-blue-50",
+                      "text-blue-600",
+                    ];
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 shadow-md border border-cyan-100 hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div
+                      className={`w-12 h-12 bg-gradient-to-br ${colors[0]} ${colors[1]} rounded-xl flex items-center justify-center flex-shrink-0`}
+                    >
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">
+                        {clinic.name[lang]}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {clinic.location[lang]}
+                      </p>
+                    </div>
+                  </div>
 
-              <div className="bg-cyan-50 rounded-xl p-4 space-y-3">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <Clock className="w-5 h-5 text-cyan-600" />
-                  <span className="font-semibold">مواعيد العمل:</span>
-                </div>
-                <div className="pr-8 space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium">الأحد</span>
-                    <span className="text-gray-600">
-                      4:00 مساءً - 6:00 مساءً
-                    </span>
+                  <div className={`rounded-xl p-4 space-y-3 ${colors[2]}`}>
+                    <div className={`flex items-center gap-3 text-gray-700`}>
+                      <Clock className={`w-5 h-5 ${colors[3]}`} />
+                      <span className="font-semibold">
+                        {lang === "ar" ? "مواعيد العمل:" : "Working Hours:"}
+                      </span>
+                    </div>
+                    <div className="pr-8 space-y-2">
+                      {clinic.schedule.map((s, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center justify-between text-sm"
+                        >
+                          <span className="font-medium">
+                            {days[lang][s.day]}
+                          </span>
+                          <span className="text-gray-600">
+                            {s.times.join(", ")}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
 
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-cyan-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
-                    عيادة ميت غمر
-                  </h3>
-                  <p className="text-gray-600 text-sm">ميت غمر، الدقهلية</p>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 rounded-xl p-4 space-y-3">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <Clock className="w-5 h-5 text-blue-600" />
-                  <span className="font-semibold">مواعيد العمل:</span>
-                </div>
-                <div className="pr-8 space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium">السبت</span>
-                    <span className="text-gray-600">
-                      2:00 مساءً - 6:00 مساءً
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium">الأربعاء</span>
-                    <span className="text-gray-600">
-                      2:00 مساءً - 6:00 مساءً
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-cyan-300 to-[#00968F] rounded-2xl p-6 text-white shadow-lg">
-              <h4 className="text-xl font-bold mb-3">💡 نصيحة مهمة</h4>
+            <div className="bg-gradient-to-br from-cyan-300 to-[#00968F] rounded-2xl p-6 text-white shadow-md">
+              <h4 className="text-xl font-bold mb-3">
+                💡 {lang === "ar" ? "نصيحة مهمة" : "Important Tip"}
+              </h4>
               <p className="text-cyan-50 leading-relaxed">
-                يُرجى الوصول قبل 10 دقائق من موعدك. في حالة التأخير أو الإلغاء،
-                يرجى التواصل معنا قبل 24 ساعة على الأقل.
+                {lang === "ar"
+                  ? "يُرجى الوصول قبل 10 دقائق من موعدك. في حالة التأخير أو الإلغاء، يرجى التواصل معنا قبل 24 ساعة على الأقل."
+                  : "Please arrive 10 minutes before your appointment. In case of delay or cancellation, please contact us at least 24 hours in advance."}
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+          {/* نموذج الحجز */}
+          <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-100">
             <div className="space-y-6">
+              {/* الاسم */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <User className="w-5 h-5 text-cyan-600" />
-                  الاسم الكامل
+                  {lang === "ar" ? "الاسم الكامل" : "Full Name"}
                   <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -331,15 +380,18 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="أدخل اسمك الكامل"
+                  placeholder={
+                    lang === "ar" ? "أدخل اسمك الكامل" : "Enter your full name"
+                  }
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 outline-none transition-all duration-200"
                 />
               </div>
 
+              {/* رقم الهاتف */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <Phone className="w-5 h-5 text-cyan-600" />
-                  رقم الهاتف
+                  {lang === "ar" ? "رقم الهاتف" : "Phone Number"}
                   <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -353,10 +405,11 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                 />
               </div>
 
+              {/* اختيار العيادة */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <MapPin className="w-5 h-5 text-cyan-600" />
-                  اختر العيادة
+                  {lang === "ar" ? "اختر العيادة" : "Select Clinic"}
                   <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -365,15 +418,19 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 outline-none transition-all duration-200 bg-white"
                 >
-                  <option value="nasr">عيادة مدينة نصر</option>
-                  <option value="october">عيادة ميت غمر</option>
+                  {Object.keys(clinics).map((key, idx) => (
+                    <option key={idx} value={key}>
+                      {clinics[key].name[lang]}
+                    </option>
+                  ))}
                 </select>
               </div>
 
+              {/* اختيار اليوم */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <Calendar className="w-5 h-5 text-cyan-600" />
-                  اختر اليوم
+                  {lang === "ar" ? "اختر اليوم" : "Select Day"}
                   <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -382,20 +439,23 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 outline-none transition-all duration-200 bg-white"
                 >
-                  <option value="">اختر اليوم</option>
+                  <option value="">
+                    {lang === "ar" ? "اختر اليوم" : "Select Day"}
+                  </option>
                   {selectedClinic?.schedule.map((s, idx) => (
                     <option key={idx} value={s.day}>
-                      {s.day}
+                      {days[lang][s.day]}
                     </option>
                   ))}
                 </select>
               </div>
 
+              {/* اختيار الوقت */}
               {formData.day && (
                 <div className="animate-fadeIn">
                   <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                     <Clock className="w-5 h-5 text-cyan-600" />
-                    اختر الوقت
+                    {lang === "ar" ? "اختر الوقت" : "Select Time"}
                     <span className="text-red-500">*</span>
                   </label>
                   <select
@@ -404,7 +464,9 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 outline-none transition-all duration-200 bg-white"
                   >
-                    <option value="">اختر الوقت</option>
+                    <option value="">
+                      {lang === "ar" ? "اختر الوقت" : "Select Time"}
+                    </option>
                     {selectedDay?.times.map((time, idx) => (
                       <option key={idx} value={time}>
                         {time}
@@ -414,21 +476,32 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                 </div>
               )}
 
+              {/* الملاحظات */}
               <div>
-                <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
+                <label
+                  className="flex items-center gap-2 text-gray-700
+                font-semibold mb-2"
+                >
                   <MessageSquare className="w-5 h-5 text-cyan-600" />
-                  ملاحظات إضافية (اختياري)
+                  {lang === "ar"
+                    ? "ملاحظات إضافية (اختياري)"
+                    : "Additional Notes (Optional)"}
                 </label>
                 <textarea
                   name="notes"
                   value={formData.notes}
                   onChange={handleChange}
                   rows="3"
-                  placeholder="أي ملاحظات أو استفسارات..."
+                  placeholder={
+                    lang === "ar"
+                      ? "أي ملاحظات أو استفسارات..."
+                      : "Any notes or inquiries..."
+                  }
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 outline-none transition-all duration-200 resize-none"
                 ></textarea>
               </div>
 
+              {/* زر الإرسال */}
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
@@ -437,7 +510,15 @@ ${formData.notes ? `📝 *ملاحظات:*\n${formData.notes}` : ""}
                 }`}
               >
                 <Calendar className="w-5 h-5" />
-                <span>{isSubmitting ? "جاري الإرسال..." : "تأكيد الحجز"}</span>
+                <span>
+                  {isSubmitting
+                    ? lang === "ar"
+                      ? "جاري الإرسال..."
+                      : "Sending..."
+                    : lang === "ar"
+                      ? "تأكيد الحجز"
+                      : "Confirm Booking"}
+                </span>
               </button>
             </div>
           </div>
