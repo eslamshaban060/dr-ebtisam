@@ -137,6 +137,7 @@ export default function TestimonialsPage({ lang = "ar" }) {
     ? "استمع لتجارب مرضانا واكتشف لماذا يثقون بنا"
     : "Listen to our patients' experiences and discover why they trust us";
   const shareText = isAr ? "شارك تجربتك" : "Share Your Experience";
+  const shareLink = isAr ? "/add-review" : "/en/add-review";
 
   return (
     <div
@@ -156,7 +157,7 @@ export default function TestimonialsPage({ lang = "ar" }) {
             {headerSubtext}
           </p>
           <a
-            href="#"
+            href={shareLink}
             className="inline-block bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             {shareText}
