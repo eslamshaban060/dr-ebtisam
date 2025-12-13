@@ -23,9 +23,9 @@ export default function Navbar({ lang }) {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsSidebarOpen(true)}
-        className="md:hidden p-2 text-gray-700 hover:text-teal-500"
+        className="md:hidden block ms-auto p-2 text-gray-700 hover:text-teal-500"
       >
-        <Menu className="w-10 h-10" />
+        <Menu className="w-10 block h-10" />
       </button>
 
       {/* Desktop Menu */}
