@@ -12,7 +12,7 @@ export default function HealthcareLanding({ lang = "ar" }) {
 
       <div>
         <Navbar lang={lang} />
-        <div className="container mx-auto px-6 md:px-8 lg:px-30 py-16">
+        <div className=" mx-auto px-6 md:px-8 lg:px-30 py-16">
           <Hero lang={lang} />
           <Features lang={lang} />
         </div>

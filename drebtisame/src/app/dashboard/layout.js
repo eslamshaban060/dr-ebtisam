@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 export default function DashboardLayout({ children }) {
   const { User, loading } = UserData();
   const router = useRouter();
-
+  console.log(User);
   useEffect(() => {
     if (!loading && User === null) {
       router.push("/login");

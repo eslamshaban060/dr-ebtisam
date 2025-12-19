@@ -1,9 +1,9 @@
 import React from "react";
-import { Reviewss } from "@/components/reviews/reviews";
+import PDF from "@/component2/pdf/App";
 const page = () => {
   return (
     <div>
-      <Reviewss lan="ar" />
+      <PDF />
     </div>
   );
 };

@@ -1,9 +1,11 @@
+import React from "react";
+import SettingsPage2 from "@/components/settings/settingPage";
+const page = () => {
+  return (
+    <div>
+      <SettingsPage2 language="en" />
+    </div>
+  );
+};
 
-const SettingsPage=()=>{
-    return(
-        <div className=" text-4xl text-yellow-950">
-            Hello this is Settings
-        </div>
-    )
-}
-export default SettingsPage
+export default page;

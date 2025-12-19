@@ -81,7 +81,7 @@ export default function Hero({ lang = "ar" }) {
           </div>
 
           {/* صورة الدكتورة */}
-          <div className="w-64 h-64 md:w-[400px] md:h-[400px] bg-gradient-to-br from-[#103463] to-blue-900 rounded-full shadow-2xl overflow-hidden relative z-10">
+          <div className="w-64 h-64 md:w-[400px] md:h-[400px] bg-[#009689]  rounded-full shadow-2xl overflow-hidden relative z-10">
             <img
               src="/user/dr-1.png"
               className="absolute w-full top-[-60px] md:top-[-80px] transition-transform duration-700 ease-out hover:scale-105"

@@ -110,30 +110,12 @@ export default function ContactSection({ lang = "ar" }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  // const handleSubmit = async () => {
-  //   if (validateForm()) {
-  //     const { error } = await supabase.from("messages").insert([
-  //       {
-  //         name: formData.name,
-  //         email: formData.email,
-  //         whatsapp: formData.phone,
-  //         messagecontent: formData.message,
-  //       },
-  //     ]);
-  //     showToast(texts.toastSuccess, "success");
-  //     setFormData({ name: "", email: "", message: "", phone: "" });
-  //   } else {
-  //     showToast(texts.toastError, "error");
-  //   }
-  // };
-
   const handleSubmit = async () => {
     if (!validateForm()) {
       showToast(texts.toastError, "error");
       return;
     }
 
-    // 1️⃣ إدخال الرسالة في messages
     const { error: messageError } = await supabase.from("messages").insert([
       {
         name: formData.name,
@@ -148,7 +130,6 @@ export default function ContactSection({ lang = "ar" }) {
       return;
     }
 
-    // 2️⃣ إدخال Notification
     const { error: notificationError } = await supabase
       .from("notification")
       .insert([
@@ -157,7 +138,7 @@ export default function ContactSection({ lang = "ar" }) {
           entitle: "New Message",
           messagecontent: formData.message,
           link: "/dashboard/messages",
-          type: "mes",
+          type: "message",
         },
       ]);
 

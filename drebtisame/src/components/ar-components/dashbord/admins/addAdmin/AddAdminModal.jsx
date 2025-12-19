@@ -54,16 +54,6 @@ export default function AddAdminModal({ texts, setIsOpen, isOpen, lan }) {
     }
 
     setStatus(texts.creating);
-    const { data: signUpData, error: signUpError } = await supabase.auth.signUp(
-      { email: formData.email, password: formData.password }
-    );
-
-    if (signUpError) {
-      setStatus("");
-      addToast("error", signUpError.message || texts.authError);
-      return;
-    }
-
     const { error: insertError } = await supabase.from("user").insert([
       {
         name: formData.name,
@@ -85,13 +75,14 @@ export default function AddAdminModal({ texts, setIsOpen, isOpen, lan }) {
     setStatus(texts.done);
     setFormData({ name: "", email: "", phone: "", password: "" });
     setTimeout(() => setIsOpen(false), 900);
+    window.location.reload();
   };
 
   if (!isOpen) return null;
 
   return (
     <>
-      <div className="fixed inset-0  bg-black/60 bg-opacity-40 flex items-center justify-center z-50">
+      <div className="fixed inset-0  bg-black/60 bg-opacity-40 flex items-center justify-center z-[100]">
         <div className="relative bg-[var(--wh)] rounded-3xl  w-[90%] max-w-2xl p-8 text-right border border-[var(--lb-2)]">
           <button
             onClick={handleClose}

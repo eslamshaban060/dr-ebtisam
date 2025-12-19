@@ -19,7 +19,7 @@ const Popup = ({ show, setShow, fun, text, id, email, lan }) => {
                 setShow(false);
               }}
             >
-              {lan === "en" ? "Sure" : "متاكد"}
+              {lan === "ar" ? "متاكد" : "Sure"}
             </button>
             <button
               className="rounded-xl lg:text-xl border-2 text-lg  leading-[24px] lg:py-5 lg:px-10 px-8 py-3 bg-[var(--wh)] hover:bg-[var(--nv)] hover:text-[var(--wh)] text-[var(--nv)] "

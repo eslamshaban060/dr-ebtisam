@@ -59,7 +59,7 @@ export default function AddReviewPage({ lang = "ar" }) {
 
     setLoading(true);
 
-    const { error } = await supabase.from("reviews").insert([
+    const { error: addreviewError } = await supabase.from("reviews").insert([
       {
         name: formData.name,
         email: formData.email,
@@ -70,8 +70,25 @@ export default function AddReviewPage({ lang = "ar" }) {
 
     setLoading(false);
 
-    if (error) {
+    if (addreviewError) {
       showToast(t.sendError, "error");
+      return;
+    }
+
+    const { error: notificationError } = await supabase
+      .from("notification")
+      .insert([
+        {
+          title: "تقييم جديد ",
+          entitle: "New Review",
+          messagecontent: formData.review,
+          link: "/dashboard/reviews",
+          type: "review",
+        },
+      ]);
+
+    if (notificationError) {
+      showToast("Error saving notification", "error");
       return;
     }
 

@@ -22,7 +22,8 @@ const SideBar = ({ Links, title, lan, user }) => {
           show={show}
           setShow={setShow}
           fun={Logout}
-          text="هل أنت متأكد أنك تريد تسجيل الخروج"
+          text={`${lan === "ar" ? "هل أنت متأكد أنك تريد تسجيل الخروج" : "Are you sure you want to log out?"}`}
+          lan={lan}
         />
       )}
 
