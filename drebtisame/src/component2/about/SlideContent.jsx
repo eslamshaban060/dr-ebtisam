@@ -39,11 +39,31 @@ export default function SlideContent({ slide, lang }) {
       </div>
 
       {/* زر الحث على اتخاذ إجراء */}
-      <div className="pt-4">
+      <div className="pt-4 flex  gap-5">
         <Link href="/blog">
-          <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-3.5 md:px-10 md:py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-2xl text-sm md:text-base group">
+          <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-4 py-3.5 md:px-10 md:py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-2xl text-sm md:text-base group">
             <span className="flex items-center gap-2">
               {slide.ctaText || "عرض المقالات"}
+              <svg
+                className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </span>
+          </button>
+        </Link>
+        <Link href="/en/report">
+          <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-4 py-3.5 md:px-10 md:py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-2xl text-sm md:text-base group">
+            <span className="flex items-center gap-2">
+              {slide.ctaText2 || "هدايا "}
               <svg
                 className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"

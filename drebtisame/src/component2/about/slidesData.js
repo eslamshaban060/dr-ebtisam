@@ -61,6 +61,7 @@ export const slidesData = {
       imageUrl: "/user/51.jpg",
       imagePlaceholder: "Dr. Ebtisam Nada",
       ctaText: " Show Articles",
+      ctaText2: "make gift",
     },
     {
       title: "Exceptional Medical Expertise",
@@ -77,6 +78,7 @@ export const slidesData = {
       imageUrl: "/user/50.jpg",
       imagePlaceholder: "Medical Clinic",
       ctaText: " Show Articles",
+      ctaText2: "make gift",
     },
     {
       title: "Comprehensive Care",
@@ -93,6 +95,7 @@ export const slidesData = {
       imageUrl: "/user/54.jpg",
       imagePlaceholder: "Medical Tests",
       ctaText: " Show Articles",
+      ctaText2: "make gift",
     },
   ],
 };
