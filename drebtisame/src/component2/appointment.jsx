@@ -17,7 +17,7 @@ export default function BookingSection({ lang = "ar" }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    clinic: "nasr",
+    clinic: "mitghamr",
     day: "",
     time: "",
     notes: "",
@@ -26,7 +26,6 @@ export default function BookingSection({ lang = "ar" }) {
   const [toast, setToast] = useState({ show: false, type: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // ترجمة الأيام
   const days = {
     ar: {
       sun: "الأحد",
@@ -49,20 +48,29 @@ export default function BookingSection({ lang = "ar" }) {
   };
 
   const clinics = {
+    mitghamr: {
+      name: { ar: "عيادة ميت غمر", en: "Mit Ghamr Clinic" },
+      location: { ar: "ميت غمر، الدقهلية", en: "Mit Ghamr, Dakahlia" },
+      whatsapp: "201222592471",
+      schedule: [
+        { day: "mon", times: ["2pm - 6pm"] },
+        { day: "wed", times: ["2pm - 6pm"] },
+      ],
+    },
     nasr: {
       name: { ar: "عيادة مدينة نصر", en: "Nasr City Clinic" },
       location: { ar: "مدينة نصر، القاهرة", en: "Nasr City, Cairo" },
-      whatsapp: "201222592471",
-      schedule: [{ day: "sun", times: ["4pm - 6pm"] }],
-    },
-    october: {
-      name: { ar: "عيادة ميت غمر", en: "Mit Ghamr Clinic" },
-      location: { ar: "ميت غمر، الدقهلية", en: "Mit Ghamr, Dakahlia" },
-      whatsapp: "201128812068",
+      whatsapp: "201006308106",
       schedule: [
-        { day: "sat", times: ["2pm - 6pm"] },
-        { day: "wed", times: ["2pm - 6pm"] },
+        { day: "sun", times: ["7pm - 10pm"] },
+        { day: "thu", times: ["7pm - 10pm"] },
       ],
+    },
+    zagazig: {
+      name: { ar: "عيادة الزقازيق", en: "Zagazig Clinic" },
+      location: { ar: "الزقازيق، الشرقية", en: "Zagazig, Sharqia" },
+      whatsapp: "201017050501,201123237799",
+      schedule: [{ day: "wed", times: ["2pm - 6pm"] }],
     },
   };
 
@@ -79,7 +87,7 @@ export default function BookingSection({ lang = "ar" }) {
         "error",
         lang === "ar"
           ? "الرجاء إدخال الاسم الكامل"
-          : "Please enter your full name"
+          : "Please enter your full name",
       );
       return false;
     }
@@ -89,7 +97,7 @@ export default function BookingSection({ lang = "ar" }) {
         "error",
         lang === "ar"
           ? "الاسم يجب أن يكون 3 أحرف على الأقل"
-          : "Name must be at least 3 characters"
+          : "Name must be at least 3 characters",
       );
       return false;
     }
@@ -100,7 +108,7 @@ export default function BookingSection({ lang = "ar" }) {
         "error",
         lang === "ar"
           ? "الرجاء إدخال رقم الهاتف"
-          : "Please enter your phone number"
+          : "Please enter your phone number",
       );
       return false;
     }
@@ -110,7 +118,7 @@ export default function BookingSection({ lang = "ar" }) {
         "error",
         lang === "ar"
           ? "رقم الهاتف غير صحيح. يجب أن يبدأ بـ 01 ويتكون من 11 رقم"
-          : "Invalid phone number. Must start with 01 and be 11 digits"
+          : "Invalid phone number. Must start with 01 and be 11 digits",
       );
       return false;
     }
@@ -118,7 +126,7 @@ export default function BookingSection({ lang = "ar" }) {
     if (!formData.clinic) {
       showToast(
         "error",
-        lang === "ar" ? "الرجاء اختيار العيادة" : "Please select a clinic"
+        lang === "ar" ? "الرجاء اختيار العيادة" : "Please select a clinic",
       );
       return false;
     }
@@ -126,7 +134,7 @@ export default function BookingSection({ lang = "ar" }) {
     if (!formData.day) {
       showToast(
         "error",
-        lang === "ar" ? "الرجاء اختيار اليوم" : "Please select a day"
+        lang === "ar" ? "الرجاء اختيار اليوم" : "Please select a day",
       );
       return false;
     }
@@ -134,7 +142,7 @@ export default function BookingSection({ lang = "ar" }) {
     if (!formData.time) {
       showToast(
         "error",
-        lang === "ar" ? "الرجاء اختيار الوقت" : "Please select a time"
+        lang === "ar" ? "الرجاء اختيار الوقت" : "Please select a time",
       );
       return false;
     }
@@ -161,7 +169,7 @@ export default function BookingSection({ lang = "ar" }) {
 ${formData.notes ? `📝 *${lang === "ar" ? "ملاحظات" : "Notes"}:*\n${formData.notes}` : ""}
 
 ---
-${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسام" : "Sent from Dr. Ebtisam's website"}
+${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسام" : "Sent from Dr. Ebtessam's website"}
 `.trim();
 
     const encodedMessage = encodeURIComponent(message);
@@ -178,7 +186,7 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
     setIsSubmitting(true);
     showToast(
       "info",
-      lang === "ar" ? "جاري إرسال طلب الحجز..." : "Sending booking request..."
+      lang === "ar" ? "جاري إرسال طلب الحجز..." : "Sending booking request...",
     );
 
     setTimeout(() => {
@@ -188,12 +196,12 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
           "success",
           lang === "ar"
             ? "تم إرسال طلب الحجز بنجاح! سيتم التواصل معك قريباً"
-            : "Booking request sent successfully! You will be contacted soon."
+            : "Booking request sent successfully! You will be contacted soon.",
         );
         setFormData({
           name: "",
           phone: "",
-          clinic: "nasr",
+          clinic: "mitghamr",
           day: "",
           time: "",
           notes: "",
@@ -203,7 +211,7 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
           "error",
           lang === "ar"
             ? "حدث خطأ أثناء الإرسال. الرجاء المحاولة مرة أخرى"
-            : "An error occurred. Please try again."
+            : "An error occurred. Please try again.",
         );
       } finally {
         setIsSubmitting(false);
@@ -222,7 +230,7 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
 
   const selectedClinic = clinics[formData.clinic];
   const selectedDay = selectedClinic?.schedule.find(
-    (s) => s.day === formData.day
+    (s) => s.day === formData.day,
   );
 
   return (
@@ -268,7 +276,6 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
       <div className="relative max-w-7xl mx-auto">
-        {/* عنوان */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <Calendar className="w-4 h-4" />
@@ -286,26 +293,31 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
           </p>
         </div>
 
-        {/* العيادات + النموذج */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* معلومات العيادات */}
           <div className="space-y-6">
             {Object.keys(clinics).map((key, idx) => {
               const clinic = clinics[key];
               const colors =
-                key === "nasr"
+                key === "mitghamr"
                   ? [
                       "from-cyan-500",
                       "to-blue-500",
                       "bg-cyan-50",
                       "text-cyan-600",
                     ]
-                  : [
-                      "from-blue-500",
-                      "to-purple-500",
-                      "bg-blue-50",
-                      "text-blue-600",
-                    ];
+                  : key === "nasr"
+                    ? [
+                        "from-blue-500",
+                        "to-purple-500",
+                        "bg-blue-50",
+                        "text-blue-600",
+                      ]
+                    : [
+                        "from-purple-500",
+                        "to-pink-500",
+                        "bg-purple-50",
+                        "text-purple-600",
+                      ];
               return (
                 <div
                   key={idx}
@@ -360,16 +372,14 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
               </h4>
               <p className="text-cyan-50 leading-relaxed">
                 {lang === "ar"
-                  ? "يُرجى الوصول قبل 10 دقائق من موعدك. في حالة التأخير أو الإلغاء، يرجى التواصل معنا قبل 24 ساعة على الأقل."
-                  : "Please arrive 10 minutes before your appointment. In case of delay or cancellation, please contact us at least 24 hours in advance."}
+                  ? "يُرجى الوصول قبل نصف ساعة من موعدك. في حالة التأخير أو الإلغاء، يرجى التواصل معنا قبل 24 ساعة على الأقل."
+                  : "Please arrive 30 minutes before your appointment. In case of delay or cancellation, please contact us at least 24 hours in advance."}
               </p>
             </div>
           </div>
 
-          {/* نموذج الحجز */}
           <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-100">
             <div className="space-y-6">
-              {/* الاسم */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <User className="w-5 h-5 text-cyan-600" />
@@ -388,7 +398,6 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
                 />
               </div>
 
-              {/* رقم الهاتف */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <Phone className="w-5 h-5 text-cyan-600" />
@@ -406,7 +415,6 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
                 />
               </div>
 
-              {/* اختيار العيادة */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <MapPin className="w-5 h-5 text-cyan-600" />
@@ -427,7 +435,6 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
                 </select>
               </div>
 
-              {/* اختيار اليوم */}
               <div>
                 <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <Calendar className="w-5 h-5 text-cyan-600" />
@@ -451,7 +458,6 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
                 </select>
               </div>
 
-              {/* اختيار الوقت */}
               {formData.day && (
                 <div className="animate-fadeIn">
                   <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
@@ -477,12 +483,8 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
                 </div>
               )}
 
-              {/* الملاحظات */}
               <div>
-                <label
-                  className="flex items-center gap-2 text-gray-700
-                font-semibold mb-2"
-                >
+                <label className="flex items-center gap-2 text-gray-700 font-semibold mb-2">
                   <MessageSquare className="w-5 h-5 text-cyan-600" />
                   {lang === "ar"
                     ? "ملاحظات إضافية (اختياري)"
@@ -502,7 +504,6 @@ ${lang === "ar" ? "تم الإرسال من موقع الدكتورة ابتسا
                 ></textarea>
               </div>
 
-              {/* زر الإرسال */}
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}

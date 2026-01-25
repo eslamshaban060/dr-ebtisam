@@ -29,22 +29,22 @@ export default function Navbar({ lang }) {
       </button>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex gap-8 items-center">
+      <div className="hidden md:flex text-2xl gap-8 items-center">
         <Link href="/" className="text-gray-700 hover:text-teal-500 transition">
           {isAr ? "الرئيسية" : "Home"}
         </Link>
-        <Link
+        {/* <Link
           href="#about"
           className="text-gray-700 hover:text-teal-500 transition"
         >
           {isAr ? "من نحن" : "About"}
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href="#services"
           className="text-gray-700 hover:text-teal-500 transition"
         >
           {isAr ? "الخدمات" : "Services"}
-        </Link>
+        </Link> */}
         <Link
           href={isAr ? "/blog" : "/en/blog"}
           className="text-gray-700 hover:text-teal-500 transition"

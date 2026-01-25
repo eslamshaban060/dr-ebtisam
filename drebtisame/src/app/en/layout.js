@@ -9,11 +9,11 @@ const poppins = Poppins({
 
 // meta dat in english
 export const metadata = {
-  title: "Dr. Ebtisam Nada | ENT & Audiology Consultant",
+  title: "Dr. Ebtessam  Nada | ENT & Audiology Consultant",
   description:
-    "Official website of Prof. Dr. Ebtisam Hamed Nada – PhD and Consultant in Hearing and Balance Disorders, Professor at Zagazig University. The clinic provides diagnosis and treatment of ear diseases, hearing loss in children, digital hearing aid programming, balance disorder therapy, cochlear implant tests, and psychological assessments.",
+    "Official website of Prof. Dr. Ebtessam  Hamed Nada – PhD and Consultant in Hearing and Balance Disorders, Professor at Zagazig University. The clinic provides diagnosis and treatment of ear diseases, hearing loss in children, digital hearing aid programming, balance disorder therapy, cochlear implant tests, and psychological assessments.",
   keywords: [
-    "Dr. Ebtisam Nada",
+    "Dr. Ebtessam  Nada",
     "ENT clinic Egypt",
     "Audiology Egypt",
     "hearing loss diagnosis",
@@ -30,13 +30,13 @@ export const metadata = {
     "learning difficulties Egypt",
     "Zagazig University",
   ],
-  authors: [{ name: "Prof. Dr. Ebtisam Hamed Nada" }],
+  authors: [{ name: "Prof. Dr. Ebtessam  Hamed Nada" }],
   openGraph: {
-    title: "Dr. Ebtisam Nada | ENT & Audiology Consultant",
+    title: "Dr. Ebtessam  Nada | ENT & Audiology Consultant",
     description:
       "Clinic specialized in ENT and audiology services: hearing loss diagnosis, balance disorder treatment, digital hearing aids, cochlear implant preparation, and psychological assessments for children.",
     url: "https://your-website.com/en",
-    siteName: "Dr. Ebtisam Nada Clinic",
+    siteName: "Dr. Ebtessam  Nada Clinic",
     locale: "en_US",
     type: "website",
   },

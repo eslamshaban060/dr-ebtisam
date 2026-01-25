@@ -36,8 +36,8 @@ export default function Hero({ lang = "ar" }) {
           } transition-opacity duration-1000 delay-200 animate-fadeIn`}
         >
           {isAr
-            ? "في عيادات الدكتورة ابتسام ندى، نجمع بين الخبرة الطبية المتقدمة والتقنيات الحديثة لتقديم تشخيص دقيق وعلاج متخصص لمشاكل السمع والتوازن."
-            : "At Dr. Ebtisam Nada’s Clinics, we combine advanced medical expertise with modern technology to provide precise diagnosis and specialized treatment for hearing and balance disorders."}
+            ? "في عيادات الدكتورة ابتسام ندا، نجمع بين الخبرة الطبية المتقدمة والتقنيات الحديثة لتقديم تشخيص دقيق وعلاج متخصص لمشاكل السمع والتوازن."
+            : "At Dr. Ebtessam  Nada’s Clinics, we combine advanced medical expertise with modern technology to provide precise diagnosis and specialized treatment for hearing and balance disorders."}
         </p>
         <div className="flex gap-4 justify-center md:justify-start">
           <Link href="#contact">
@@ -55,46 +55,26 @@ export default function Hero({ lang = "ar" }) {
 
       {/* Doctor Image with Sound Wave Animation */}
       <div className="flex-1 flex justify-center transition-all duration-1000 ease-out transform opacity-0 animate-fadeInRight relative">
-        <div className="relative">
-          {/* موجات صوتية متحركة حول الصورة */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute w-72 h-72 md:w-[450px] md:h-[450px] rounded-full border-2 border-teal-300 opacity-30 animate-soundWave1"></div>
-            <div className="absolute w-80 h-80 md:w-[500px] md:h-[500px] rounded-full border-2 border-teal-400 opacity-20 animate-soundWave2"></div>
-            <div className="absolute w-88 h-88 md:w-[550px] md:h-[550px] rounded-full border-2 border-teal-500 opacity-10 animate-soundWave3"></div>
-          </div>
+        <div className="relative flex items-center justify-center">
+          {/* Glow Effect */}
+          <div className="absolute w-80 h-80 lg:w-[450px] lg:h-[450px] rounded-full bg-gradient-to-br from-[#007FA1]/30 to-accent/30 blur-3xl animate-pulse-glow" />
 
-          {/* أيقونات مناسبة للسمع */}
-          <div className="absolute top-10 hidden md:block right-5 animate-floatIcon1">
-            <div className="bg-white rounded-full p-3 shadow-lg">
-              <span className="text-teal-400 text-2xl"></span>
+          {/* Main Visual Container */}
+          <div className="relative animate-scale-in animation-delay-200">
+            {/* Outer Decorative Ring */}
+            <div className="absolute -inset-4 rounded-full border-2 border-[#007FA1]/20 animate-pulse-glow" />
+            <div className="absolute -inset-8 rounded-full border border-[#007FA1]/10" />
+
+            {/* Image Container */}
+            <div className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl ring-4 ring-[#007FA1]/20 animate-float">
+              <img
+                src="https://i.ytimg.com/vi/kOz6WDZgelE/hqdefault.jpg"
+                alt="طفل سعيد يرتدي سماعة أذن طبية"
+                className="w-full h-[115%] object-cover mt-[-25px]"
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#007FA1]/10 via-transparent to-transparent" />
             </div>
-          </div>
-
-          <div className="absolute bottom-10 hidden md:block left-0 animate-floatIcon2">
-            <div className="bg-white rounded-full p-3 shadow-lg">
-              <span className="text-blue-500 text-2xl"></span>
-            </div>
-          </div>
-
-          <div className="absolute top-1/2 hidden md:block left-[-50px] animate-floatIcon3">
-            <div className="bg-white rounded-full p-3 shadow-lg"></div>
-          </div>
-
-          {/* صورة الدكتورة */}
-          <div className="w-64 h-64 md:w-[400px] md:h-[400px] bg-[#009689]  rounded-full shadow-2xl overflow-hidden relative z-10">
-            <img
-              src="/user/dr-1.png"
-              className="absolute w-full top-[-60px] md:top-[-80px] transition-transform duration-700 ease-out hover:scale-105"
-              alt="Dr. Entesam Ladi"
-            />
-          </div>
-
-          {/* نبضات ضوئية لطيفة */}
-          <div className="absolute bottom-5 right-5 animate-pulse">
-            <div className="w-5 h-5 hidden md:block bg-teal-400 rounded-full shadow-lg"></div>
-          </div>
-          <div className="absolute bottom-105 right-60 animate-pulse">
-            <div className="w-5 h-5 hidden md:block bg-teal-400 rounded-full shadow-lg"></div>
           </div>
         </div>
       </div>

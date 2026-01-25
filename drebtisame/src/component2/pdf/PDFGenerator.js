@@ -13,7 +13,7 @@ import {
 import { GiftCardForm } from "./Forms";
 
 // الباسورد الصحيح
-const CORRECT_PASSWORD = "drebtisam--123";
+const CORRECT_PASSWORD = "drEbtessam --123";
 
 const Toast = ({ message, type = "success", onClose }) => {
   useEffect(() => {
@@ -280,7 +280,7 @@ export default function App() {
         6,
         2.5,
         2.5,
-        "F"
+        "F",
       );
 
       doc.setFontSize(7);
@@ -292,7 +292,7 @@ export default function App() {
         `Valid until: ${data.validUntil}`,
         CARD_W - M - 4,
         CARD_H - M - 3,
-        { align: "right" }
+        { align: "right" },
       );
 
       // حفظ الملف

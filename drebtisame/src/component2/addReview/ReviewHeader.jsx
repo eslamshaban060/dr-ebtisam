@@ -4,7 +4,7 @@ export default function ReviewHeader({ lang }) {
   const content = {
     ar: {
       title: "شاركنا رأيك",
-      desc: "رأيك يهمنا! شاركنا تجربتك مع د. ابتسام ندى لمساعدة الآخرين",
+      desc: "رأيك يهمنا! شاركنا تجربتك مع د. ابتسام ندا لمساعدة الآخرين",
     },
     en: {
       title: "Share Your Review",

@@ -61,7 +61,7 @@ const ForgetPasswordForm = ({ users }) => {
 
     <!-- Footer -->
     <div style="text-align:center; font-size:12px; color:#333333; padding:16px;">
-      © 2025 Dr. Ebtisam Nada Website – All rights reserved.
+      © 2025 Dr. Ebtessam  Nada Website – All rights reserved.
     </div>
   </div>
 </div>
@@ -91,7 +91,7 @@ const ForgetPasswordForm = ({ users }) => {
         } else {
           setStatus(false);
           throw new Error(
-            "An error occurred while sending the verification code. Please try again."
+            "An error occurred while sending the verification code. Please try again.",
           );
         }
       } else {

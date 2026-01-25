@@ -116,7 +116,7 @@ export default function ServicesSection({ lang = "ar" }) {
           >
             {lang === "ar"
               ? "في عيادة الدكتورة ابتسام، نقدم خدمات دقيقة وشاملة لصحة السمع والتوازن، من تقييمات السمع إلى أحدث العلاجات، مع رعاية شخصية تضمن راحتك واهتمامنا بك."
-              : "At Dr. Ebtisam's clinic, we provide precise and comprehensive hearing and balance services—from assessments to advanced treatments—with personalized care focused on your comfort."}
+              : "At Dr. Ebtessam 's clinic, we provide precise and comprehensive hearing and balance services—from assessments to advanced treatments—with personalized care focused on your comfort."}
           </p>
         </div>
 
@@ -176,7 +176,7 @@ export default function ServicesSection({ lang = "ar" }) {
         </Slider>
 
         {/* زر الحجز */}
-        <div className="text-center hidden lg:block mt-12 md:mt-16">
+        {/* <div className="text-center hidden lg:block mt-12 md:mt-16">
           <Link href="#appoint">
             <button className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
               <span>
@@ -198,7 +198,7 @@ export default function ServicesSection({ lang = "ar" }) {
               </svg>
             </button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

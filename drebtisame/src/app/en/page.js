@@ -7,15 +7,17 @@ import ServicesSection from "@/component2/services/services";
 import ContactSection from "@/component2/contact/contact";
 import BookingSection from "@/component2/appointment";
 import BlogSection from "@/component2/blog/blogs";
-import ClinicChatbot from "@/component2/chatboot";
+import OnlineConsultation from "@/component2/online";
+import HeroSection from "@/component2/HealthcareLanding";
 const page = () => {
   return (
     <div>
-      <HealthcareLanding lang="en" />
+      <HeroSection lang="en" />
       <DoctorHeroSection lang="en" />
       <ServicesSection lang="en" />
       <BookingSection lang="en" />
       <BlogSection lang="en" />
+      <OnlineConsultation lang="en" />
 
       <Page lang="en" />
       <ContactSection lang="en" />

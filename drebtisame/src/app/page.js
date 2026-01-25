@@ -8,16 +8,20 @@ import BookingSection from "@/component2/appointment";
 import ContactSection from "@/component2/contact/contact";
 import BlogSection from "@/component2/blog/blogs";
 import ClinicChatbot from "@/component2/chatboot";
+import OnlineConsultation from "@/component2/online";
+import BooksSection from "@/component2/book";
 const page = () => {
   return (
     <div>
       {/* Aa@12345 */}
-      {/* drebtisam--123 */}
+      {/* drEbtessam --123 */}
       <HealthcareLanding lang="ar" />
       <DoctorHeroSection lang="ar" />
       <ServicesSection lang="ar" />
       <BookingSection lang="ar" />
+      <BooksSection lang="ar" />
       <BlogSection lang="ar" />
+      <OnlineConsultation lang="ar" />
       <TestimonialsPage lang="ar" />
       <ContactSection lang="ar" />
       <Footer lang="ar" />

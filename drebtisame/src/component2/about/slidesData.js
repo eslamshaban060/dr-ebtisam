@@ -2,9 +2,9 @@ export const slidesData = {
   ar: [
     {
       title: "مرحبًا بكم في عيادات",
-      highlight: "الدكتورة ابتسام ندى",
+      highlight: "الدكتورة ابتسام ندا",
       description:
-        "في عيادات الدكتورة ابتسام ندى، نكرس جهودنا لتشخيص وعلاج اضطرابات السمع والتوازن بعناية فائقة. يجمع نهجنا بين التقنيات الطبية المتقدمة، الخبرة العميقة، والاهتمام بالمريض لضمان حصول كل مريض على خطة علاجية مخصصة في بيئة مريحة واحترافية.",
+        "في عيادات الدكتورة ابتسام ندا، نكرس جهودنا لتشخيص وعلاج اضطرابات السمع والتوازن بعناية فائقة. يجمع نهجنا بين التقنيات الطبية المتقدمة، الخبرة العميقة، والاهتمام بالمريض لضمان حصول كل مريض على خطة علاجية مخصصة في بيئة مريحة واحترافية.",
       credentials: [
         "أستاذ واستشاري في طب السمع والتوازن – جامعة الزقازيق",
         "عضو المجلس العلمي لمجلس النواب المصري لطب السمع والتوازن",
@@ -13,8 +13,8 @@ export const slidesData = {
       badge: "استشاري معتمد",
       // imageUrl:
       //   "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&h=1000&fit=crop&q=80",
-      imageUrl: "/user/51.jpg",
-      imagePlaceholder: "د. ابتسام ندى",
+      imageUrl: "/user/50.jpg",
+      imagePlaceholder: "د. ابتسام ندا",
     },
     {
       title: "خبرة طبية متميزة",
@@ -41,7 +41,7 @@ export const slidesData = {
         "متابعة دورية لضمان أفضل النتائج العلاجية",
       ],
       badge: "رعاية متكاملة",
-      imageUrl: "/user/54.jpg",
+      imageUrl: "/user/50.jpg",
       imagePlaceholder: "الفحوصات الطبية",
     },
   ],
@@ -49,17 +49,17 @@ export const slidesData = {
     {
       title: "Welcome to Clinics",
       subTitle: "About us",
-      highlight: "Dr. Ebtisam Nada",
+      highlight: "Dr. Ebtessam  Nada",
       description:
-        "At Dr. Ebtisam Nada's Clinics, we dedicate our efforts to diagnosing and treating hearing and balance disorders with great care. Our approach combines advanced medical technologies, deep expertise, and patient attention to ensure each patient receives a personalized treatment plan in a comfortable and professional environment.",
+        "At Dr. Ebtessam  Nada's Clinics, we dedicate our efforts to diagnosing and treating hearing and balance disorders with great care. Our approach combines advanced medical technologies, deep expertise, and patient attention to ensure each patient receives a personalized treatment plan in a comfortable and professional environment.",
       credentials: [
         "Professor and Consultant in Audiology – Zagazig University",
         "Member of the Scientific Council of the Egyptian Parliament for Audiology",
         "Vice President of the Audiology Doctors Association – Sharqia",
       ],
       badge: "Certified Consultant",
-      imageUrl: "/user/51.jpg",
-      imagePlaceholder: "Dr. Ebtisam Nada",
+      imageUrl: "/user/50.jpg",
+      imagePlaceholder: "Dr. Ebtessam  Nada",
       ctaText: " Show Articles",
       ctaText2: "make gift",
     },
@@ -92,7 +92,7 @@ export const slidesData = {
         "Regular follow-ups to ensure the best treatment outcomes",
       ],
       badge: "Integrated Care",
-      imageUrl: "/user/54.jpg",
+      imageUrl: "/user/50.jpg",
       imagePlaceholder: "Medical Tests",
       ctaText: " Show Articles",
       ctaText2: "make gift",

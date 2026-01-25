@@ -40,7 +40,7 @@ const AdminPage = () => {
     <section className="h-[75dvh] w-[100%]  overflow-x-hidden overflow-y-auto bg-[var(--lb)] p-2">
       <Herro
         title="Admin Management"
-        desc="This section is dedicated to supervisor management, where only Dr. Ebtisam can add or remove supervisors."
+        desc="This section is dedicated to supervisor management, where only Dr. Ebtessam  can add or remove supervisors."
         butt="Add Admin"
         lan="en"
       />

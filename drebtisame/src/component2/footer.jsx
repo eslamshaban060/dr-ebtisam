@@ -4,8 +4,8 @@ import { Facebook, Youtube, MessageCircle } from "lucide-react";
 export default function Footer({ lang = "ar" }) {
   const t = {
     ar: {
-      doctor: "الدكتورة إبتسام ندى",
-      desc: "في عيادات الدكتورة إبتسام ندى، نجمع بين الخبرة الطبية المتقدمة والتقنيات الحديثة لتقديم تشخيص دقيق وعلاج شخصي لمشاكل السمع.",
+      doctor: "الدكتورة إبتسام ندا",
+      desc: "في عيادات الدكتورة إبتسام ندا، نجمع بين الخبرة الطبية المتقدمة والتقنيات الحديثة لتقديم تشخيص دقيق وعلاج شخصي لمشاكل السمع.",
       discover: "روابط سريعة",
       home: "الصفحة الرئيسية",
       about: "من نحن",
@@ -15,14 +15,14 @@ export default function Footer({ lang = "ar" }) {
       appointment: "احجز موعدك",
       chat: "تواصل معنا",
       chatText: "للدردشة على واتساب وحجز موعدك مباشرة",
-      rights: "جميع الحقوق محفوظة © 2024 عيادات الدكتورة إبتسام ندى",
+      rights: "جميع الحقوق محفوظة © 2024 عيادات الدكتورة إبتسام ندا",
       followUs: "تابعنا",
       dir: "rtl",
       align: "text-right",
     },
     en: {
-      doctor: "Dr. Ebtisam Nada",
-      desc: "At Dr. Ebtisam Nada Clinics, we combine advanced medical expertise with modern technology for accurate diagnosis and personalized hearing treatment.",
+      doctor: "Dr. Ebtessam  Nada",
+      desc: "At Dr. Ebtessam  Nada Clinics, we combine advanced medical expertise with modern technology for accurate diagnosis and personalized hearing treatment.",
       discover: "Quick Links",
       home: "Home",
       about: "About Us",
@@ -32,7 +32,7 @@ export default function Footer({ lang = "ar" }) {
       appointment: "Book Appointment",
       chat: "Contact Us",
       chatText: "Chat on WhatsApp to book your appointment directly",
-      rights: "All rights reserved © 2024 Dr. Ebtisam Nada Clinics",
+      rights: "All rights reserved © 2024 Dr. Ebtessam  Nada Clinics",
       followUs: "Follow Us",
       dir: "ltr",
       align: "text-left",

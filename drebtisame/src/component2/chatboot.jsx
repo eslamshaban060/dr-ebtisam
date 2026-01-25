@@ -46,11 +46,11 @@ export default function ClinicChatbot({ lang = "ar" }) {
     },
     en: {
       title: "Smart Clinic Assistant",
-      subtitle: "Dr. Ebtisam Nada",
+      subtitle: "Dr. Ebtessam  Nada",
       placeholder: "Type your question...",
       send: "Send",
       welcome:
-        "Welcome 👋\n\nI'm the virtual assistant for Dr. Ebtisam Nada (Hearing & Balance Clinics).\n\nI can help you with:\n✓ Clinic schedules\n✓ Appointments\n✓ Location\n✓ Available services\n✓ Contact & Social Media\n\nHow can I help you?",
+        "Welcome 👋\n\nI'm the virtual assistant for Dr. Ebtessam  Nada (Hearing & Balance Clinics).\n\nI can help you with:\n✓ Clinic schedules\n✓ Appointments\n✓ Location\n✓ Available services\n✓ Contact & Social Media\n\nHow can I help you?",
       suggestions: [
         "Working hours",
         "Book appointment",
@@ -525,7 +525,7 @@ export default function ClinicChatbot({ lang = "ar" }) {
 
   const shareToWhatsApp = (text) => {
     const message = encodeURIComponent(
-      `من عيادات د. إبتسام ندى 🏥\n\n${text}\n\nللحجز: 01234567890`
+      `من عيادات د. إبتسام ندا 🏥\n\n${text}\n\nللحجز: 01234567890`,
     );
     const whatsappUrl = `https://wa.me/?text=${message}`;
     window.open(whatsappUrl, "_blank");
@@ -676,7 +676,7 @@ export default function ClinicChatbot({ lang = "ar" }) {
                       >
                         {suggestion}
                       </button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
