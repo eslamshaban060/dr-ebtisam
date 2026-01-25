@@ -53,8 +53,8 @@ export default function BookingSection({ lang = "ar" }) {
       location: { ar: "ميت غمر، الدقهلية", en: "Mit Ghamr, Dakahlia" },
       whatsapp: "201222592471",
       schedule: [
-        { day: "mon", times: ["2pm - 6pm"] },
-        { day: "wed", times: ["2pm - 6pm"] },
+        { day: "mon", times: ["3pm - 6pm"] },
+        { day: "wed", times: ["3pm - 6pm"] },
       ],
     },
     nasr: {
@@ -62,15 +62,15 @@ export default function BookingSection({ lang = "ar" }) {
       location: { ar: "مدينة نصر، القاهرة", en: "Nasr City, Cairo" },
       whatsapp: "201006308106",
       schedule: [
-        { day: "sun", times: ["7pm - 10pm"] },
-        { day: "thu", times: ["7pm - 10pm"] },
+        { day: "sun", times: ["5pm - 7pm"] },
+        { day: "thu", times: ["2pm - 4pm"] },
       ],
     },
     zagazig: {
       name: { ar: "عيادة الزقازيق", en: "Zagazig Clinic" },
       location: { ar: "الزقازيق، الشرقية", en: "Zagazig, Sharqia" },
       whatsapp: "201017050501,201123237799",
-      schedule: [{ day: "wed", times: ["2pm - 6pm"] }],
+      schedule: [{ day: "wed", times: ["3pm - 6pm"] }],
     },
   };
 
