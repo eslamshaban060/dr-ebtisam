@@ -9,6 +9,7 @@ import BookingSection from "@/component2/appointment";
 import BlogSection from "@/component2/blog/blogs";
 import OnlineConsultation from "@/component2/online";
 import HeroSection from "@/component2/HealthcareLanding";
+import BooksSection from "@/component2/book";
 const page = () => {
   return (
     <div>
@@ -16,6 +17,8 @@ const page = () => {
       <DoctorHeroSection lang="en" />
       <ServicesSection lang="en" />
       <BookingSection lang="en" />
+      <BooksSection lang="en" />
+
       <BlogSection lang="en" />
       <OnlineConsultation lang="en" />
 
