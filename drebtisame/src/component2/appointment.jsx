@@ -70,7 +70,7 @@ export default function BookingSection({ lang = "ar" }) {
       name: { ar: "عيادة الزقازيق", en: "Zagazig Clinic" },
       location: { ar: "الزقازيق، الشرقية", en: "Zagazig, Sharqia" },
       whatsapp: "201017050501,201123237799",
-      schedule: [{ day: "wed", times: ["3pm - 6pm"] }],
+      schedule: [{ day: "tue", times: ["3pm - 6pm"] }],
     },
   };
 
